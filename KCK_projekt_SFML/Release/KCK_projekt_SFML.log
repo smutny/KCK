@@ -1,0 +1,28 @@
+﻿Build started 2014-10-31 13:14:47.
+     1>Project "C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt EkranGlowny.cpp EkranGry.cpp Main.cpp Planet.cpp Ship.cpp stdafx.cpp
+         EkranGlowny.cpp
+         EkranGry.cpp
+         Main.cpp
+         Planet.cpp
+     1>Planet.cpp(8): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+         Ship.cpp
+     1>Ship.cpp(35): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+         stdafx.cpp
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Release\KCK_projekt_SFML.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Release" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Release\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Release\KCK_projekt_SFML.lib" /MACHINE:X86 /SAFESEH Release\EkranGlowny.obj
+         Release\EkranGry.obj
+         Release\Main.obj
+         Release\Planet.obj
+         Release\Ship.obj
+         Release\stdafx.obj
+         Generating code
+     1>c:\users\gracjan\documents\visual studio 2013\projects\kck_projekt_sfml\kck_projekt_sfml\ship.cpp(50): warning C4715: 'Ship::isBeyondMap' : not all control paths return a value
+         Finished generating code
+         KCK_projekt_SFML.vcxproj -> C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Release\KCK_projekt_SFML.exe
+     1>Done Building Project "C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.32
