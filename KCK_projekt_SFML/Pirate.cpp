@@ -4,7 +4,7 @@
 
 #include "Pirate.h"
 
-void Pirate::attack(int x, int y, Ship& s)
+void Pirate::attack(int x, int y, Ship& s) //REFERENCJA BITCHES
 {
 	auto seed1 = std::chrono::system_clock::now().time_since_epoch().count();
 
