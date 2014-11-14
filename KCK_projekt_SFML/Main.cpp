@@ -76,27 +76,7 @@ int main(int argv, char* argc[])
 		}
 
 	
-		/*
-		if (s.isStuck == true)
-			s.statek.setPosition(10, 10);
-		else
-			if (s.statek.getPosition().x > 140 )
-			{
-				
-					s.statek.move(-30 * dt, 0);
-				
-			}
-	
-			
-			else if (s.statek.getPosition().y > 140 )
-			{
-				
-					s.statek.move(0, -30*dt);
-					
-				
-			}
-			
-	*/
+
 		
 
 	

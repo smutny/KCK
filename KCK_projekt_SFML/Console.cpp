@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Help.h"
 #include "Console.h"
+
   int Console::fontSize = 15;								//mo¿na zmieniaæ
   int Console::firstLinePositionX = 550;					//mo¿na zmieniaæ
   int Console::firstLinePositionY = 40;					//mo¿na zmieniaæ
