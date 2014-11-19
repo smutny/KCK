@@ -25,7 +25,11 @@
 #include <vector>
 
 #include <memory>
-
+#include <sstream>
+#include <iterator>
+#include<locale>
+#include<Windows.h>
+#include<stringapiset.h>
 
 using namespace std;
 

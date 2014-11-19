@@ -1,12 +1,21 @@
-﻿Build started 2014-11-07 12:58:37.
-     1>Project "C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
-         Main.cpp
-     1>c:\users\gracjan\documents\visual studio 2013\projects\kck_projekt_sfml\kck_projekt_sfml\main.cpp(103): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\gracjan\documents\visual studio 2013\projects\kck_projekt_sfml\kck_projekt_sfml\main.cpp(118): warning C4244: 'argument' : conversion from 'const float' to 'int', possible loss of data
+﻿Build started 2014-11-19 18:38:47.
+     1>Project "C:\Users\Kacper\Desktop\projekt kck\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Help.cpp
+         Help.cpp
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(43): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(46): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(90): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(106): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(109): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(119): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\desktop\projekt kck\kck\kck_projekt_sfml\help.cpp(121): warning C4018: '<' : signed/unsigned mismatch
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\Console.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Kacper\Documents\SFML\lib\Debug "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\Console.obj
          Debug\Pirate.obj
          Debug\Window.obj
          Debug\GameScreen.obj
@@ -17,9 +26,12 @@
          Debug\Planet.obj
          Debug\Ship.obj
          Debug\stdafx.obj
-         KCK_projekt_SFML.vcxproj -> C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\Debug\KCK_projekt_SFML.exe
-     1>Done Building Project "C:\Users\Gracjan\Documents\Visual Studio 2013\Projects\KCK_projekt_SFML\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
+         KCK_projekt_SFML.vcxproj -> C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild".
+         Touching "Debug\KCK_projekt_SFML.tlog\KCK_projekt_SFML.lastbuildstate".
+     1>Done Building Project "C:\Users\Kacper\Desktop\projekt kck\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.18
+Time Elapsed 00:00:01.43
