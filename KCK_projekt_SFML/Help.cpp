@@ -63,7 +63,8 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<string> bezargumentowe = { "wita", "czesc", "siem", "hej" };
+	vector<string> bezargumentowe = { "wita", "czesc", "siem", "hej", "doberek" };
+	vector<string> przeklenstwa = { "kurw", "jeb", "pierd" };
 	vector<string> operatory = { "lec", "kup" };
 	vector<string> latanie = { "prawo", "lewo", "gora", "dol" };
 	vector<string> przekupowanie = { "celn", "gran", "pira" };
@@ -80,10 +81,30 @@ std::wstring Help::textAnalysis(std::wstring text)
 
 	//analiza
 
-	//wyszukiwanie bezargumentowych
-
+	//ugrzeczniacz
 	int j = 0;
 	int k = 0;
+	while (j < tokens.size())
+	{
+		k = 0;
+		while (k <przeklenstwa.size() && ssearch(tokens.at(j), przeklenstwa.at(k)) == 1000)
+		{
+			k++;
+		}
+		if (k == przeklenstwa.size()) //nie bylo operatora, nastepne slowo
+		{
+			j++;
+		}
+		else
+		{
+			return L"Nie! Grzeczniej prosze!";
+		}
+	}
+
+
+	//wyszukiwanie bezargumentowych
+	j = 0;
+	k = 0;
 	while (j < tokens.size())
 	{
 		k = 0;
@@ -97,7 +118,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else
 		{
-			return s2ws(tokens.at(j));
+			return s2ws(tokens.at(j))+ L" Kapitanie!";
 		}
 	}
 	j = 0;
