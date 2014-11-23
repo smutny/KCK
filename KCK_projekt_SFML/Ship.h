@@ -18,7 +18,8 @@ public:
 	
 	bool isBeyondMap();
 
-
+	unsigned getMoney(){ return money; }
+	void setMoney(unsigned m){ money = m; }
 
 	unsigned money;
 	bool isStuck;
