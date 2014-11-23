@@ -8,6 +8,7 @@
 #include "Console.h"
 
 #include "Pirate.h"
+#include "Parameter.h"
 
 
 int main(int argv, char* argc[])
@@ -20,6 +21,7 @@ int main(int argv, char* argc[])
 	
 
 	Ship s;
+	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
 	Pirate p1;
 	 vector<Planet*> p;
@@ -98,6 +100,7 @@ int main(int argv, char* argc[])
 		p1.attack(s.statek.getPosition().x, s.statek.getPosition().y, s);
 
 		s.display();
+		money.display(s.getMoney());
 		
 	
 	
