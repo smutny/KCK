@@ -6,108 +6,67 @@
 #include "Ship.h"
 #include "Planet.h"
 #include "Console.h"
-
-#include "Pirate.h"
 #include "Parameter.h"
+#include "Pirate.h"
+
 
 
 int main(int argv, char* argc[])
 {
+	int hajsLeci = 232;
+
 	Window::Window();
 	GameScreen::GameScreen();
 	Console::Console();
 
-	sf::Clock zegar;
+	sf::Clock clock;
 	
-
-	Ship s;
 	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
-	Pirate p1;
-	 vector<Planet*> p;
-
-	 p.push_back(new Planet(140, 140, 1));
-	 p.push_back(new Planet(70, 440, 2));
-	 p.push_back(new Planet(290, 140, 3));
-	 p.push_back(new Planet(420, 290, 4));
-
+	Ship s; Pirate p1;
 	
-
-	
+	 map<string, Planet*> planets;
+	 planets["Merkury"] = new Planet(140, 140, 1);
+	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
+	 planets["Joiwsz"] = new Planet(290, 140, 3);
+	 planets["Neptun"] = new Planet(420, 290, 4);
 
 	while (Window::isOpen())
 	{
-
-		 auto dt = zegar.restart().asSeconds();
-	
-
+		
+		auto dt = clock.restart().asSeconds();
+		
 		sf::Event event;
-
-		while (Window::pollEvent(event) && s.isStuck==false)
+		while (Window::pollEvent(event))
 		{
-			
-		Window::close(event);
-
-		
-		Window::halp();
-		Console::dupa(event);
-		/*
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-				if (!s.isBeyondMap())
-					s.statek.move(0, -40 * dt);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-				if (!s.isBeyondMap())
-					s.statek.move(0, 40 * dt);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-				if (!s.isBeyondMap())
-					s.statek.move(-40 * dt,0);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-				if (!s.isBeyondMap())
-					s.statek.move(40 * dt,0 );
-		*/	
-		string c = "sss";
-		int z = 0;
-		if (s.statek.getPosition().x > 140 && c == "sss")
-			
-			while (z < 10)
-			{
-				s.statek.move(-90 *dt, 0);
-				z++;
-				
-			}
+			Window::close(event);
+			Window::halp();
+			Console::doYourJob(event);
 		}
 
-	
+	Window::clear();
+	GameScreen::display();
+	Console::display();
 
-		
-
-	
-		p1.attack(s.statek.getPosition().x, s.statek.getPosition().y, s);
-		Window::clear();
-		
-
-		Window::draw(GameScreen::getBackground());
-			
-		
-		for (auto &planet : p)
-		{
-			planet->display();
-		}
-
-		Console::display();
-
-		
-		p1.attack(s.statek.getPosition().x, s.statek.getPosition().y, s);
-
-		s.display();
+		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
+
+		for (auto planet : planets)
+		{
+			planet.second->display();
+		}
+
+
+		string name = "Merkury";
+		//s.fly(dt, L"lewo");
+		s.flyTo(dt, *planets[name]);
+		s.setMoney(++hajsLeci);
+		s.display();
+
 		
 	
-	
-		Window::display();
-		
-		
-	
+	Window::display();	
+
 	}
 	return 0;
 }

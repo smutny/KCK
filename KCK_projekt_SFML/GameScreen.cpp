@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "Window.h"
 #include "GameScreen.h"
 
 sf::Texture GameScreen::texture;
@@ -15,9 +16,9 @@ GameScreen::~GameScreen()
 {
 }
 
-sf::Sprite GameScreen::getBackground()
+void GameScreen::display()
 {
-	return sprite;
+	Window::draw(sprite);
 }
 
 void GameScreen::setBackGround(const char* localisation)
@@ -30,5 +31,4 @@ void GameScreen::setBackGround(const char* localisation)
 void GameScreen::setPosition(float x, float y)
 {
 	sprite.setPosition(x, y);
-
 }

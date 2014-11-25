@@ -1,23 +1,22 @@
 #pragma once
+
 class Planet
 {
 public:
-
-
-	void display();
-
 	Planet();
 	Planet(float x, float y, float numer);
 	~Planet();
-	float getX();
-	float getY();
-	
+
+	int getX();
+	int getY();
+
+	void display();
+
 private:
 	void setTexture(unsigned numer);
-	void setCoordinates(float x, float y);
+	void setPosition(float x, float y);
 	bool interactive;
 	
-
 	 sf::Texture planetTexture;
 	 sf::Sprite planetSprite;
 };

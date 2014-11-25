@@ -3,7 +3,6 @@
 #include "Planet.h"
 #include "Ship.h"
 
-
 Ship::Ship()
 {
 	setTexture();
@@ -18,6 +17,89 @@ Ship::~Ship()
 {
 }
 
+void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
+{
+	movementCounter++;
+
+		vx = vy = 0;
+		if (rozkaz == L"lewo" && isStuck == false) 
+			vx += -10;
+	
+		if (rozkaz == L"prawo" && isStuck == false) 
+			vx += 65;
+		
+		if (rozkaz == L"góra" && isStuck == false) 
+			vy += -10;
+		
+		if (rozkaz == L"dó³" && isStuck == false) 
+			vy += 65;
+		
+		if (movementCounter <= counterLimit)
+		{
+			comeBack();
+
+			x += vx * dt;
+			y += vy * dt;
+		}
+}
+
+void Ship::flyTo(float& dt, Planet& p)
+{
+	
+	if (this->getX() < p.getX())
+	{
+		this->fly(dt, L"prawo", 7000);
+		this->focus(p);
+	}
+	else if (this->getX() > p.getX())
+	{
+		this->fly(dt, L"lewo", 7000);
+		this->focus(p);
+	}
+	else if (this->getY() > p.getY())
+	{
+		this->fly(dt, L"góra", 7000);
+		this->focus(p);
+	}
+	else if (this->getY() < p.getY())
+	{
+		this->fly(dt, L"dó³", 7000);
+		this->focus(p);
+	}
+
+}
+
+
+void Ship::comeBack()
+{
+	if (this->getX() > 460)
+		this->x = 460;
+	if (this->getX() < 30)
+		this->x = 30;
+	if (this->getY() < 30)
+		this->y = 30;
+	if (this->getY() > 460)
+		this->y = 460;
+}
+
+void Ship::display()
+{
+	statek.setPosition(x, y);
+	Window::draw(statek);
+}
+
+void Ship::focus(Planet& p)
+{
+	if (this->getX() > p.getX() &&
+		this->getX() < p.getX() + 70 &&
+		this->getY() > p.getY() &&
+		this->getY() < p.getY() + 70
+		)
+
+		isStuck = true;
+}
+
+
 void Ship::setTexture()
 {
 	statekTekstura.loadFromFile("spaceShip.png");
@@ -27,36 +109,5 @@ void Ship::setTexture()
 void Ship::setPosition(float x, float y)
 {
 	statek.setPosition(x,y);
-}
-
-
-void Ship::calaNaprzod(string rozkaz)
-{
-	if (rozkaz == "naprzod")
-		statek.move(0, -50);
-}
-
-//do zmiany
-bool Ship::isBeyondMap()
-{
-	if (statek.getPosition().x < 600 && statek.getPosition().x > 10 &&
-		statek.getPosition().y < 600 && statek.getPosition().y > 10)
-	return false;
-}
-
-void Ship::focus(Planet p)
-	{
-		if (statek.getPosition().x > p.getX() &&
-			statek.getPosition().x < p.getX() + 70 &&
-			statek.getPosition().y > p.getY() &&
-			statek.getPosition().y < p.getY() + 70
-			)
-
-			isStuck = true;
-	}
-
-
-void Ship::display()
-{
-	Window::draw(statek);
+	this->x = x; this->y = y;
 }
