@@ -5,12 +5,8 @@ public:
 	Console();
 	~Console();
 
-	static void dupa(sf::Event event);
-
-	
+	static void doYourJob(sf::Event event);
 	static void display();
-
-	
 
 private:
 	static void setFont(const char* fontLocalisation);

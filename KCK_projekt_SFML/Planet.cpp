@@ -20,34 +20,33 @@ Planet::~Planet()
 
 }
 
-void Planet::setTexture(unsigned numer)
+void Planet::setTexture(unsigned number)
 {
-	planetTexture.loadFromFile("planet" + to_string(numer) + ".png");
+	planetTexture.loadFromFile("planet" + to_string(number) + ".png");
 	planetSprite.setTexture(planetTexture);
 }
 
-void Planet::setCoordinates(float x, float y)
+void Planet::setPosition(float x, float y)
 {
 	planetSprite.setPosition(x, y);
 }
 
 
 
-Planet::Planet(float x, float y, float number )
+Planet::Planet(float x, float y, float number)
 {
 	interactive = true;
-
 	setTexture(number);
-	setCoordinates(x,y);
+	setPosition(x,y);
 }
 
 
 
-float Planet::getX()
+int Planet::getX()
 {
 	return planetSprite.getPosition().x;
 }
-float Planet::getY()
+int Planet::getY()
 {
 	return planetSprite.getPosition().y;
 }

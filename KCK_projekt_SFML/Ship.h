@@ -1,34 +1,36 @@
 #pragma once
-
 class Planet;
-
 class Ship
 {
 public:
 	Ship();
-
 	~Ship();
-	
+	int getX() { return this->x; }
+	int getY() { return this->y; }
 
 	void display();
 
-	void focus(Planet p);
-
-	void calaNaprzod(string rozkaz);
+	void fly(float& dt, wstring rozkaz, int counterLimit = 70);
+	void flyTo(float& dt, Planet& p);
+	void focus(Planet& p);
 	
-	bool isBeyondMap();
-
 	unsigned getMoney(){ return money; }
 	void setMoney(unsigned m){ money = m; }
 
-	unsigned money;
-	bool isStuck;
+	void comeBack();
 
-//private:
+	bool isStuck;
+	int movementCounter = 0;
+	// movmentCounter jako public poniewaz funkcja wydajaca rozkaz np."prawo" bedzie musiala go zerowac
+private:
 	void setTexture();
 	void setPosition(float x = 460, float y = 460);
 
+	
+	int vx, vy;
+	int x, y;
 
+	unsigned money;
 	sf::Texture statekTekstura;
 	sf::Sprite statek;
 };

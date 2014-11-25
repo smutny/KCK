@@ -16,20 +16,26 @@
 
 //biblioteka standardowa
 #include <iostream>
+#include <sstream>
 
+#include <locale>
 #include <chrono>
 #include <random>
 #include <algorithm>
 
 #include <string>
 #include <vector>
+#include <map>
+#include <iterator>
 
 #include <memory>
-#include <sstream>
-#include <iterator>
-#include<locale>
-#include<Windows.h>
-#include<stringapiset.h>
+
+
+//windows
+#include <Windows.h>
+#include <stringapiset.h>
+
+
 
 using namespace std;
 

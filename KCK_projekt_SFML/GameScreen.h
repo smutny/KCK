@@ -7,6 +7,7 @@ public:
 	~GameScreen();
 	
 	static sf::Sprite getBackground();
+	static void display();
 
 private:
 	static void setBackGround(const char* localisation);

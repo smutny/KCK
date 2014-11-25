@@ -1,15 +1,5 @@
 #pragma once
 
-#include <string>
-#include <sstream>
-#include <iterator>
-#include<locale>
-#include<Windows.h>
-#include<stringapiset.h>
-#include<vector>
-
-using namespace std;
-
 class Help
 {
 public:

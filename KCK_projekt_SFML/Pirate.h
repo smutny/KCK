@@ -2,11 +2,12 @@
 class Pirate
 {
 public:
-
-	void attack(int x, int y, Ship& s);
-
-
 	Pirate();
 	~Pirate();
+	void attack(int x, int y, Ship &s);
+
+private:
+
+	
 };
 

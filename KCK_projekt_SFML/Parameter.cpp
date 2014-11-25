@@ -34,3 +34,5 @@ void Parameter::display(unsigned x)
 
 	Window::draw(text);
 }
+
+

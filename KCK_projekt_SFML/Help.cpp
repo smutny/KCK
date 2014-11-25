@@ -1,6 +1,6 @@
+#include "stdafx.h"
 #include "Help.h"
 
-using namespace std;
 Help::Help()
 {
 }
@@ -38,12 +38,12 @@ std::string Help::ws2s(const std::wstring& s)
 int Help::ssearch(string a, string b) //(gdzie, szukany)
 {
 	unsigned int present;
-	for (auto i=0; i < a.length(); i++)
+	for (auto i = 0; i < a.length(); i++)
 	{
-		for (auto j=i; j < a.length(); j++)
+		for (auto j = i; j < a.length(); j++)
 		{
 			present = 0;
-			for (auto k = 0; k < b.length() && (j+k)<a.length(); k++)
+			for (auto k = 0; k < b.length() && (j + k)<a.length(); k++)
 			{
 				if (a[j + k] == b[k])
 				{
@@ -64,12 +64,12 @@ std::wstring Help::textAnalysis(std::wstring text)
 	//slownik
 
 	vector<string> bezargumentowe = { "wita", "czesc", "siem", "hej", "doberek" };
-	vector<string> przeklenstwa = { "kurw", "jeb", "pierd" };
+	vector<string> przeklenstwa = { "kurw", "jeb", "pierd", "chuj" };
 	vector<string> operatory = { "lec", "kup" };
 	vector<string> latanie = { "prawo", "lewo", "gora", "dol" };
 	vector<string> przekupowanie = { "celn", "gran", "pira" };
 	vector<vector<string>*> wskazniki = { &latanie, &przekupowanie };
-	
+
 	//tokenizacja
 
 	string sentence = ws2s(text);
@@ -118,7 +118,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else
 		{
-			return s2ws(tokens.at(j))+ L" Kapitanie!";
+			return s2ws(tokens.at(j)) + L" Kapitanie!";
 		}
 	}
 	j = 0;
@@ -137,91 +137,92 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else //byl operator, szukamy argumentu
 		{
-			for (auto i=j; i < tokens.size(); i++)//slowa po operatorze
+			for (auto i = j; i < tokens.size(); i++)//slowa po operatorze
 			{
 				for (auto l = 0; l < (*wskazniki.at(k)).size(); l++)
 				{
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
-						return L"Wykonuje komende \""+s2ws(tokens.at(j)) +L" " + s2ws(tokens.at(i)) + L"\"";
+						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
 					}
 				}
-				
+
 			}
 			return L"Komenda \"" + s2ws(tokens.at(j)) + L"\" wymaga argumentu!";
 			j++;
 		}
 	}
 	return L"Komenda nieznana";
-	
+
 	/*
 	if ((ssearch(text, L"czesc") != 1000) || (ssearch(text,L"witaj")!=1000))
 	{
-		return L"Witaj Kapitanie!";
+	return L"Witaj Kapitanie!";
 	}
 	if (ssearch(text, L"lec")!=1000)
 	{
-		int pozycja = ssearch(text, L"do");
-		if (pozycja!=1000)
-		{
-			wstring output=L"Lece ";
-			for (int i = pozycja; i < text.length(); i++)
-			{
-				output += text[i];
-			}
-			return output;
-		}
-		pozycja = ssearch(text, L"w");
-		if (pozycja != 1000)
-		{
-			wstring output = L"Lece ";
-			for (int i = pozycja; i < text.length(); i++)
-			{
-				output += text[i];
-			}
-			//wywolanie funkcji lec z argumentem prawo, lewo, prosto, tyl
-			return output;
-		}
-		return L"Nie wiem dokad";
+	int pozycja = ssearch(text, L"do");
+	if (pozycja!=1000)
+	{
+	wstring output=L"Lece ";
+	for (int i = pozycja; i < text.length(); i++)
+	{
+	output += text[i];
+	}
+	return output;
+	}
+	pozycja = ssearch(text, L"w");
+	if (pozycja != 1000)
+	{
+	wstring output = L"Lece ";
+	for (int i = pozycja; i < text.length(); i++)
+	{
+	output += text[i];
+	}
+	//wywolanie funkcji lec z argumentem prawo, lewo, prosto, tyl
+	return output;
+	}
+	return L"Nie wiem dokad";
 	}
 	if (ssearch(text, L"kup") != 1000)
 	{
-		int pozycja = ssearch(text, L"kup");
-		if (pozycja != 1000)
-		{
-			if (text.length()>(pozycja + 3))
-			{
-				wstring output = L"Przekupuje";
-				for (int i = pozycja + 3; i < text.length(); i++)
-				{
-					output += text[i];
-				}
-				//wywolanie funkcji przekup
-				return output;
-			}
-		}
-		return L"Nie wiem kogo przekupic";
+	int pozycja = ssearch(text, L"kup");
+	if (pozycja != 1000)
+	{
+	if (text.length()>(pozycja + 3))
+	{
+	wstring output = L"Przekupuje";
+	for (int i = pozycja + 3; i < text.length(); i++)
+	{
+	output += text[i];
+	}
+	//wywolanie funkcji przekup
+	return output;
+	}
+	}
+	return L"Nie wiem kogo przekupic";
 	}
 	if (ssearch(text, L"sprzeda")!=1000)
 	{
-		int pozycja = ssearch(text, L"sprzedaj");
-		if (pozycja != 1000 )
-		{
-			if (text.length()>(pozycja+8))
-			{
-				wstring output = L"Sprzedalem";
-				for (int i = pozycja + 8; i < text.length(); i++)
-				{
-					output += text[i];
-				}
-				//wywolanie funkcji sprzedaj
-				return output;
-			}
-		}
-		return L"Nie wiem co sprzedac";
+	int pozycja = ssearch(text, L"sprzedaj");
+	if (pozycja != 1000 )
+	{
+	if (text.length()>(pozycja+8))
+	{
+	wstring output = L"Sprzedalem";
+	for (int i = pozycja + 8; i < text.length(); i++)
+	{
+	output += text[i];
+	}
+	//wywolanie funkcji sprzedaj
+	return output;
+	}
+	}
+	return L"Nie wiem co sprzedac";
 
 	}
 	return L"Nie rozumiem komendy " + text;
 	*/
 }
+
