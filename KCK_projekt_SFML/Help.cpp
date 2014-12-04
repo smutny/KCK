@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Help.h"
 
+Ship* Help::statek;
+float * Help::dt;
+map<string, Planet*> Help::planety;
+
 Help::Help()
 {
 }
@@ -65,8 +69,8 @@ std::wstring Help::textAnalysis(std::wstring text)
 
 	vector<string> bezargumentowe = { "wita", "czesc", "siem", "hej", "doberek" };
 	vector<string> przeklenstwa = { "kurw", "jeb", "pierd", "chuj" };
-	vector<string> operatory = { "lec", "kup" };
-	vector<string> latanie = { "prawo", "lewo", "gora", "dol" };
+	vector<string> operatory = { "lec", "kup"};
+	vector<string> latanie = { "prawo", "lewo", "gora", "dol", "Merkury" };
 	vector<string> przekupowanie = { "celn", "gran", "pira" };
 	vector<vector<string>*> wskazniki = { &latanie, &przekupowanie };
 
@@ -144,6 +148,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
+						wykonaj_komende(tokens.at(j), tokens.at(i));
 						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
 					}
 				}
@@ -154,75 +159,29 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 	}
 	return L"Komenda nieznana";
-
-	/*
-	if ((ssearch(text, L"czesc") != 1000) || (ssearch(text,L"witaj")!=1000))
-	{
-	return L"Witaj Kapitanie!";
-	}
-	if (ssearch(text, L"lec")!=1000)
-	{
-	int pozycja = ssearch(text, L"do");
-	if (pozycja!=1000)
-	{
-	wstring output=L"Lece ";
-	for (int i = pozycja; i < text.length(); i++)
-	{
-	output += text[i];
-	}
-	return output;
-	}
-	pozycja = ssearch(text, L"w");
-	if (pozycja != 1000)
-	{
-	wstring output = L"Lece ";
-	for (int i = pozycja; i < text.length(); i++)
-	{
-	output += text[i];
-	}
-	//wywolanie funkcji lec z argumentem prawo, lewo, prosto, tyl
-	return output;
-	}
-	return L"Nie wiem dokad";
-	}
-	if (ssearch(text, L"kup") != 1000)
-	{
-	int pozycja = ssearch(text, L"kup");
-	if (pozycja != 1000)
-	{
-	if (text.length()>(pozycja + 3))
-	{
-	wstring output = L"Przekupuje";
-	for (int i = pozycja + 3; i < text.length(); i++)
-	{
-	output += text[i];
-	}
-	//wywolanie funkcji przekup
-	return output;
-	}
-	}
-	return L"Nie wiem kogo przekupic";
-	}
-	if (ssearch(text, L"sprzeda")!=1000)
-	{
-	int pozycja = ssearch(text, L"sprzedaj");
-	if (pozycja != 1000 )
-	{
-	if (text.length()>(pozycja+8))
-	{
-	wstring output = L"Sprzedalem";
-	for (int i = pozycja + 8; i < text.length(); i++)
-	{
-	output += text[i];
-	}
-	//wywolanie funkcji sprzedaj
-	return output;
-	}
-	}
-	return L"Nie wiem co sprzedac";
-
-	}
-	return L"Nie rozumiem komendy " + text;
-	*/
 }
 
+void Help::wykonaj_komende(string komenda, string argument)
+{
+	if (komenda == "lec")
+	{
+		if (argument == "lewo" || argument == "prawo" || argument == "gora" || argument == "dol" )
+		{
+			statek->fly(*dt, s2ws(argument));
+		}
+		else
+		{
+			//map<string, Planet*> temp = *planety;
+			string name = "Merkury";
+			statek->flyTo(*	dt, *planety[name]);
+		}
+	}
+	
+}
+
+void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> planets)
+{
+	statek = st;
+	dt = time;
+	planety = planets;
+}

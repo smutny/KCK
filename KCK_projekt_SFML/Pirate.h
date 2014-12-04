@@ -8,6 +8,6 @@ public:
 
 private:
 
-	
+	static unsigned int chance;
 };
 

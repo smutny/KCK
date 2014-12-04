@@ -1,45 +1,12 @@
-﻿Build started 2014-11-25 14:23:25.
-     1>Project "C:\Users\Gracjan\Documents\GitHub\KCK-1\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Console.cpp Parameter.cpp Pirate.cpp Window.cpp GameScreen.cpp Help.cpp Human.cpp Main.cpp MotherPlanet.cpp Planet.cpp Ship.cpp stdafx.cpp
-         stdafx.cpp
-         Ship.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\ship.cpp(41): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\ship.cpp(42): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\ship.cpp(87): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\ship.cpp(112): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-         Planet.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\planet.cpp(39): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\planet.cpp(47): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\planet.cpp(51): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-         MotherPlanet.cpp
+﻿Build started 2014-12-04 22:19:51.
+     1>Project "C:\Users\Kacper\Desktop\projekt kck\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-         Human.cpp
-         Help.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(41): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(43): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(46): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(87): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(90): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(108): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(111): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(127): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(130): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(140): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(142): warning C4018: '<' : signed/unsigned mismatch
-         GameScreen.cpp
-         Window.cpp
-         Pirate.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\pirate.cpp(16): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
-         Parameter.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\parameter.cpp(33): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Console.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\console.cpp(106): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Generating Code...
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\window.cpp(39): warning C4715: 'Window::pollEvent' : not all control paths return a value
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\window.cpp(33): warning C4715: 'Window::isOpen' : not all control paths return a value
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\Console.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\Console.obj
          Debug\Parameter.obj
          Debug\Pirate.obj
          Debug\Window.obj
@@ -51,9 +18,12 @@
          Debug\Planet.obj
          Debug\Ship.obj
          Debug\stdafx.obj
-         KCK_projekt_SFML.vcxproj -> C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.exe
-     1>Done Building Project "C:\Users\Gracjan\Documents\GitHub\KCK-1\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
+         KCK_projekt_SFML.vcxproj -> C:\Users\Kacper\Desktop\projekt kck\KCK\Debug\KCK_projekt_SFML.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild".
+         Touching "Debug\KCK_projekt_SFML.tlog\KCK_projekt_SFML.lastbuildstate".
+     1>Done Building Project "C:\Users\Kacper\Desktop\projekt kck\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:16.26
+Time Elapsed 00:00:02.11

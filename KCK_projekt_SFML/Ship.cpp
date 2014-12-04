@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Planet.h"
 #include "Ship.h"
+#include "Pirate.h"
 
 Ship::Ship()
 {
@@ -28,10 +29,10 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 		if (rozkaz == L"prawo" && isStuck == false) 
 			vx += 65;
 		
-		if (rozkaz == L"góra" && isStuck == false) 
+		if (rozkaz == L"gora" && isStuck == false) 
 			vy += -10;
 		
-		if (rozkaz == L"dó³" && isStuck == false) 
+		if (rozkaz == L"dol" && isStuck == false) 
 			vy += 65;
 		
 		if (movementCounter <= counterLimit)
@@ -45,28 +46,31 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 
 void Ship::flyTo(float& dt, Planet& p)
 {
-	
-	if (this->getX() < p.getX())
+	Pirate pirat;
+	while (this->getX() < p.getX() || this->getX() > p.getX() || this->getY() > p.getY() || this->getY() < p.getY())
 	{
-		this->fly(dt, L"prawo", 7000);
-		this->focus(p);
+		pirat.attack(this->getX(), this->getY(), *this);
+		if (this->getX() < p.getX())
+		{
+			this->fly(dt, L"prawo", 7000);
+			this->focus(p);
+		}
+		else if (this->getX() > p.getX())
+		{
+			this->fly(dt, L"lewo", 7000);
+			this->focus(p);
+		}
+		else if (this->getY() > p.getY())
+		{
+			this->fly(dt, L"gora", 7000);
+			this->focus(p);
+		}
+		else if (this->getY() < p.getY())
+		{
+			this->fly(dt, L"dol", 7000);
+			this->focus(p);
+		}
 	}
-	else if (this->getX() > p.getX())
-	{
-		this->fly(dt, L"lewo", 7000);
-		this->focus(p);
-	}
-	else if (this->getY() > p.getY())
-	{
-		this->fly(dt, L"góra", 7000);
-		this->focus(p);
-	}
-	else if (this->getY() < p.getY())
-	{
-		this->fly(dt, L"dó³", 7000);
-		this->focus(p);
-	}
-
 }
 
 

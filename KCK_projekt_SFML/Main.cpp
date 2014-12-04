@@ -8,6 +8,7 @@
 #include "Console.h"
 #include "Parameter.h"
 #include "Pirate.h"
+#include "Help.h"
 
 
 
@@ -30,12 +31,12 @@ int main(int argv, char* argc[])
 	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
 	 planets["Joiwsz"] = new Planet(290, 140, 3);
 	 planets["Neptun"] = new Planet(420, 290, 4);
-
+	 auto dt = clock.restart().asSeconds();
 	while (Window::isOpen())
 	{
 		
-		auto dt = clock.restart().asSeconds();
-		
+		//auto dt = clock.restart().asSeconds();
+		Help::podaj_statek(&s, &dt, planets);
 		sf::Event event;
 		while (Window::pollEvent(event))
 		{
@@ -48,7 +49,7 @@ int main(int argv, char* argc[])
 	GameScreen::display();
 	Console::display();
 
-		p1.attack(s.getX(), s.getY(), s);
+		//p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
 
 		for (auto planet : planets)
@@ -59,12 +60,13 @@ int main(int argv, char* argc[])
 
 		string name = "Merkury";
 		//s.fly(dt, L"lewo");
-		s.flyTo(dt, *planets[name]);
+		//s.flyTo(dt, *planets[name]);
 		s.setMoney(++hajsLeci);
 		s.display();
 
 		
-	
+
+		
 	Window::display();	
 
 	}
