@@ -6,3 +6,5 @@ public:
 	~MotherPlanet();
 };
 
+//Resetowanie planet
+//Kupowanie stuff od nich

@@ -115,3 +115,11 @@ void Ship::setPosition(float x, float y)
 	statek.setPosition(x,y);
 	this->x = x; this->y = y;
 }
+
+void Ship::SetStuff(int stuff) {
+	this->stuff = stuff;
+}
+
+int Ship::GetStuff() {
+	return stuff;
+}

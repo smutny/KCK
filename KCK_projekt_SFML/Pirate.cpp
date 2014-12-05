@@ -12,10 +12,11 @@ unsigned int Pirate::chance;
 void Pirate::attack(int x, int y, Ship &s)
 {
 
-	if (((x % 70 == 0 || y % 70 == 0) && chance <= 30) && s.isStuck == false)
+	if (((x % 70 == 0 || y % 70 == 0) && chance <=100) && s.isStuck == false)
 	{
 		s.isStuck = true;
 		cout << "YAARrrr! " << s.isStuck << endl;
+		Pirate::action(s);
 	}
 
 }
@@ -33,4 +34,20 @@ Pirate::Pirate()
 
 Pirate::~Pirate()
 {
+}
+
+void Pirate::action(Ship& statek){
+	cout << "Zaplac " << Pirate::GetPrice() << " albo spadaj!\n";
+	int  temp = 1;
+	cin >> temp;
+	if ((temp == 1) && (Pirate::GetPrice() < statek.getMoney())) {
+		cout << "Dobra, lec\n";
+		statek.setMoney(statek.getMoney() - Pirate::GetPrice());
+		statek.isStuck = false;
+	}
+	else {
+		cout << "Nie pokazuj sie tu wiecej,  frajerze!\n";
+		statek.SetStuff(0);
+		statek.isStuck = false;
+	}
 }

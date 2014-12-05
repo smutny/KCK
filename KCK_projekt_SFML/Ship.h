@@ -14,8 +14,11 @@ public:
 	void flyTo(float& dt, Planet& p);
 	void focus(Planet& p);
 	
-	unsigned getMoney(){ return money; }
-	void setMoney(unsigned m){ money = m; }
+	int getMoney(){ return money; }
+	void setMoney(int m){ money = m; }
+
+	void SetStuff(int stuff);
+	int GetStuff();
 
 	void comeBack();
 
@@ -30,7 +33,9 @@ private:
 	int vx, vy;
 	int x, y;
 
-	unsigned money;
+	int money;
+	int stuff;
+
 	sf::Texture statekTekstura;
 	sf::Sprite statek;
 };

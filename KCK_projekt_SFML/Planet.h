@@ -12,7 +12,15 @@ public:
 
 	void display();
 
+	void SetPrice(int pprice);
+	int GetPrice();
+	void SetBoolTrue();
+	void SetBoolFalse();
+	bool CanWeShop();
+
 private:
+	int pprice;
+
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
 	bool interactive;

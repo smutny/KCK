@@ -2,8 +2,6 @@
 #include "Window.h"
 #include "Planet.h"
 
-
-
 void Planet::display()
 {
 	Window::draw(planetSprite);
@@ -31,8 +29,6 @@ void Planet::setPosition(float x, float y)
 	planetSprite.setPosition(x, y);
 }
 
-
-
 Planet::Planet(float x, float y, float number)
 {
 	interactive = true;
@@ -49,4 +45,24 @@ int Planet::getX()
 int Planet::getY()
 {
 	return planetSprite.getPosition().y;
+}
+
+void Planet::SetPrice(int price) {
+	this->pprice = price;
+}
+
+int Planet::GetPrice() {
+	return pprice;
+}
+
+void Planet::SetBoolFalse() {
+	interactive = false;
+}
+
+void Planet::SetBoolTrue() {
+	interactive = true;
+}
+
+bool Planet::CanWeShop() {
+	return interactive;
 }
