@@ -4,6 +4,7 @@
 Ship* Help::statek;
 float * Help::dt;
 map<string, Planet*> Help::planety;
+Command Help::komenda;
 
 Help::Help()
 {
@@ -148,7 +149,10 @@ std::wstring Help::textAnalysis(std::wstring text)
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
-						wykonaj_komende(tokens.at(j), tokens.at(i));
+						//wykonaj_komende(tokens.at(j), tokens.at(i));
+						komenda.funkcja = tokens.at(j);
+						komenda.argument = tokens.at(i);
+						komenda.check = true;
 						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
 					}
 				}
@@ -161,27 +165,31 @@ std::wstring Help::textAnalysis(std::wstring text)
 	return L"Komenda nieznana";
 }
 
-void Help::wykonaj_komende(string komenda, string argument)
+void Help::wykonaj_komende(string komenda, string argument,Ship * statek, float dt)
 {
 	if (komenda == "lec")
 	{
 		if (argument == "lewo" || argument == "prawo" || argument == "gora" || argument == "dol" )
 		{
-			statek->fly(*dt, s2ws(argument));
+			statek->fly(dt, s2ws(argument));
 		}
 		else
 		{
 			//map<string, Planet*> temp = *planety;
 			string name = "Merkury";
-			statek->flyTo(*	dt, *planety[name]);
+			//while (!statek->isStuck)
+			//{
+				statek->flyTo(dt, *planety[name]);
+			//}
 		}
 	}
 	
 }
 
-void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> planets)
+void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> & planets, Command & c)
 {
 	statek = st;
 	dt = time;
 	planety = planets;
+	komenda = c;
 }

@@ -47,9 +47,9 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 void Ship::flyTo(float& dt, Planet& p)
 {
 	Pirate pirat;
-	while (this->getX() < p.getX() || this->getX() > p.getX() || this->getY() > p.getY() || this->getY() < p.getY())
-	{
-		pirat.attack(this->getX(), this->getY(), *this);
+	//while (this->getX() < p.getX() || this->getX() > p.getX() || this->getY() > p.getY() || this->getY() < p.getY())
+	//{
+		//pirat.attack(this->getX(), this->getY(), *this);
 		if (this->getX() < p.getX())
 		{
 			this->fly(dt, L"prawo", 7000);
@@ -70,7 +70,7 @@ void Ship::flyTo(float& dt, Planet& p)
 			this->fly(dt, L"dol", 7000);
 			this->focus(p);
 		}
-	}
+	//}
 }
 
 
