@@ -157,7 +157,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Pirate.cpp" />
@@ -172,7 +171,6 @@
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Command.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Pirate.h" />

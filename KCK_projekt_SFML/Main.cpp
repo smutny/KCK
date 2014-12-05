@@ -9,7 +9,6 @@
 #include "Parameter.h"
 #include "Pirate.h"
 #include "Help.h"
-#include"Command.h"
 
 
 
@@ -25,30 +24,25 @@ int main(int argv, char* argc[])
 	
 	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
-	Ship s; Pirate p1; Command c;
-	c.check = false;
+	Ship s; Pirate p1;
 	
 	 map<string, Planet*> planets;
 	 planets["Merkury"] = new Planet(140, 140, 1);
 	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
 	 planets["Joiwsz"] = new Planet(290, 140, 3);
 	 planets["Neptun"] = new Planet(420, 290, 4);
+	 auto dt = clock.restart().asSeconds();
 	while (Window::isOpen())
 	{
-		auto dt = clock.restart().asSeconds();
-
+		
+		//auto dt = clock.restart().asSeconds();
+		Help::podaj_statek(&s, &dt, planets);
 		sf::Event event;
 		while (Window::pollEvent(event))
 		{
 			Window::close(event);
 			Window::halp();
 			Console::doYourJob(event);
-			if (c.check)
-			{
-				Help::wykonaj_komende(c.funkcja, c.argument, &s, dt);
-				cout << c.check;
-			}
-			Help::podaj_statek(&s, &dt, planets, c);
 		}
 
 	Window::clear();
