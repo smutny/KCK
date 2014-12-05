@@ -25,6 +25,7 @@ int main(int argv, char* argc[])
 	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
 	Ship s; Pirate p1;
+	p1.SetPrice(220);
 	
 	 map<string, Planet*> planets;
 	 planets["Merkury"] = new Planet(140, 140, 1);
