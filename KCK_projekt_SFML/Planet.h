@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Ship.h"
+
 class Planet
 {
 public:
@@ -17,6 +19,9 @@ public:
 	void SetBoolTrue();
 	void SetBoolFalse();
 	bool CanWeShop();
+
+	void welcome();
+	void shopingTime(Ship& statek);
 
 private:
 	int pprice;
