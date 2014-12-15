@@ -10,6 +10,8 @@ public:
 	void attack(int x, int y, Ship &s);
 
 	void action(Ship& statek);
+	void positiveAnswer(Ship& statek);
+	void negativeAnswer(Ship& statek);
 private:
 
 	static unsigned int chance;

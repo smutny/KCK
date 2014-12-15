@@ -8,7 +8,6 @@
 unsigned int Pirate::chance;
 
 
-
 void Pirate::attack(int x, int y, Ship &s)
 {
 
@@ -29,6 +28,8 @@ Pirate::Pirate()
 	uniform_int_distribution<unsigned> distribution(1, 100);
 
 	chance = distribution(generator);
+
+	SetPrice(220);
 }
 
 
@@ -49,5 +50,22 @@ void Pirate::action(Ship& statek){
 		cout << "Nie pokazuj sie tu wiecej,  frajerze!\n";
 		statek.SetStuff(0);
 		statek.isStuck = false;
+	}
+}
+/**/
+void Pirate::negativeAnswer(Ship& statek) {
+	cout << "Nie pokazuj sie tu wiecej,  frajerze!\n";
+	statek.SetStuff(0);
+	statek.isStuck = false;
+}
+
+void Pirate::positiveAnswer(Ship& statek) {
+	if (Pirate::GetPrice() < statek.getMoney()) {
+		cout << "Dobra, lec\n";
+		statek.setMoney(statek.getMoney() - Pirate::GetPrice());
+		statek.isStuck = false;
+	}
+	else {
+		negativeAnswer(statek);
 	}
 }

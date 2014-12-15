@@ -66,3 +66,20 @@ void Planet::SetBoolTrue() {
 bool Planet::CanWeShop() {
 	return interactive;
 }
+
+void Planet::welcome() {
+	cout << "Witaj, chcia³bys cos sprzedac?\n";
+}
+
+void Planet::shopingTime(Ship& statek) {
+	cout << "Mozemy odkupic od Ciebie towar za " << GetPrice() << "\nIle chcesz sprzedac?\n";
+	int i;
+	if (i <= statek.GetStuff()) {
+		cout << "Bierzemy\n";
+		statek.SetStuff(statek.GetStuff() - i);
+		statek.setMoney(GetPrice()*i);
+	}
+	else {
+		cout << "Nie masz tyle\n";
+	}
+}
