@@ -10,6 +10,8 @@
  const char* Console::fontLocalisation = "arial.ttf";
 
  int Console::currentLineNumber = 0;
+ int Console::searchCurrentLineNumber = 0;
+ int Console::sLineNumber = 0;
  wstring Console::str[maxLineNumber] = { L"" };
  wstring Console::captainPrefix = L"Kapitan >> ";	//mo¿na zmieniaæ
  wstring Console::banachPrefix = L"Banach >> ";		//mo¿na zmieniaæ
@@ -31,6 +33,42 @@ Console::Console()
 
 void Console::doYourJob(sf::Event event)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		while (searchCurrentLineNumber > 0 && str[searchCurrentLineNumber - 1].find(captainPrefix) == std::string::npos)
+		{
+			searchCurrentLineNumber--;
+		}
+		if (searchCurrentLineNumber > 0)
+		{
+			searchCurrentLineNumber--;
+			str[currentLineNumber] = str[searchCurrentLineNumber];
+			sLineNumber = searchCurrentLineNumber;
+		}
+		else
+		{
+			searchCurrentLineNumber = sLineNumber;
+			str[currentLineNumber] = str[searchCurrentLineNumber];
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		while (searchCurrentLineNumber < currentLineNumber - 1 && str[searchCurrentLineNumber + 1].find(captainPrefix) == std::string::npos)
+		{
+			searchCurrentLineNumber++;
+		}
+		if (searchCurrentLineNumber < currentLineNumber - 1)
+		{
+			searchCurrentLineNumber++;
+			str[currentLineNumber] = str[searchCurrentLineNumber];
+			sLineNumber = searchCurrentLineNumber;
+		}
+		else
+		{
+			searchCurrentLineNumber = sLineNumber;
+			str[currentLineNumber] = str[searchCurrentLineNumber];
+		}
+	}
 	
 
 	if (event.type == sf::Event::TextEntered)
@@ -48,36 +86,21 @@ void Console::doYourJob(sf::Event event)
 				{
 					temp += str[currentLineNumber][i];
 				}
-				if (currentLineNumber < maxLineNumber - 2)
+
+				if (currentLineNumber < maxLineNumber - 1)
 				{
-					str[currentLineNumber + 1] = banachPrefix + Help::textAnalysis(temp);
-					currentLineNumber = currentLineNumber + 2;
-					str[currentLineNumber] = captainPrefix;
+					currentLineNumber++;
+					sLineNumber = searchCurrentLineNumber = currentLineNumber;
+					Console::putTextLine(banachPrefix + Help::textAnalysis(temp));
 				}
 				else
 				{
-					if (currentLineNumber == maxLineNumber - 2)
+					for (int i = 0; i < maxLineNumber - 1; i++)
 					{
-						str[currentLineNumber + 1] = banachPrefix + Help::textAnalysis(temp);
-						for (int i = 0; i < maxLineNumber - 1; i++)
-						{
-							str[i] = str[i + 1];
-						}
-						currentLineNumber = maxLineNumber - 1;
-						str[currentLineNumber] = captainPrefix;
+						str[i] = str[i + 1];
 					}
-					else
-					{
-						if (currentLineNumber == maxLineNumber - 1)
-						{
-							for (int i = 0; i < maxLineNumber - 2; i++)
-							{
-								str[i] = str[i + 2];
-							}
-							str[currentLineNumber - 1] = banachPrefix + Help::textAnalysis(temp);
-							str[currentLineNumber] = captainPrefix;
-						}
-					}
+					sLineNumber = searchCurrentLineNumber = currentLineNumber;
+					Console::putTextLine(banachPrefix + Help::textAnalysis(temp));
 				}
 			}
 			else
@@ -111,4 +134,24 @@ void Console::display()
 		Window::draw(text[i]);
 	}
 
+}
+
+void Console::putTextLine(wstring line)
+{
+	str[currentLineNumber] = line;
+
+	if (currentLineNumber < maxLineNumber - 1)
+	{
+		currentLineNumber++;
+		sLineNumber = searchCurrentLineNumber = currentLineNumber;
+	}
+	else
+	{
+		for (int i = 0; i < maxLineNumber - 1; i++)
+		{
+			str[i] = str[i + 1];
+		}
+	}
+
+	str[currentLineNumber] = captainPrefix;
 }
