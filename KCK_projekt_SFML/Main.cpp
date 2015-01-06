@@ -10,12 +10,13 @@
 #include "Parameter.h"
 #include "Pirate.h"
 #include "Help.h"
+#include "BorderMan.h"
 
 
 
 int main(int argv, char* argc[])
 {
-	int hajsLeci = 232;
+	//int hajsLeci = 232;
 
 	Window::Window();
 	GameScreen::GameScreen();
@@ -25,12 +26,12 @@ int main(int argv, char* argc[])
 	
 	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
-	Ship s; Pirate p1;
+	Ship s; Pirate p1; BorderMan b;
 	
 	 map<string, Planet*> planets;
 	 planets["Merkury"] = new Planet(140, 140, 1);
 	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
-	 planets["Joiwsz"] = new Planet(290, 140, 3);
+	 planets["Jowisz"] = new Planet(290, 140, 3);
 	 planets["Neptun"] = new Planet(420, 290, 4);
 	 auto dt = clock.restart().asSeconds();
 	while (Window::isOpen())
@@ -50,7 +51,7 @@ int main(int argv, char* argc[])
 	GameScreen::display();
 	Console::display();
 
-		//p1.attack(s.getX(), s.getY(), s);
+		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
 
 		for (auto planet : planets)

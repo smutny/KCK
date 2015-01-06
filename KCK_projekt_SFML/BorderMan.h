@@ -7,5 +7,13 @@ using namespace std;
 
 class BorderMan : public Human {
 public:
-	void action(Ship& statek, Planet& p);
+	BorderMan();
+	~BorderMan();
+
+	void action(Ship& statek);
+
+	void negativeAns(Planet& p);
+	void positiveAns(Planet& p, Ship& s);
+//private:
+	static unsigned int chance;
 };
