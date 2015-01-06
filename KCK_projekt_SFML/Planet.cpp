@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Window.h"
 #include "Planet.h"
+#include "Console.h"
+#include "BorderMan.h"
+#include "Ship.h"
 
 void Planet::display()
 {
@@ -67,13 +70,31 @@ bool Planet::CanWeShop() {
 	return interactive;
 }
 
-void Planet::welcome() {
-	cout << "Witaj, chcia³bys cos sprzedac?\n";
+bool Planet::onPlanet(Ship& statek) {
+	if ((statek.getX() == getX()) && (statek.getY() == getY())) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
+	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
+		b.action(statek);
+	}
+	if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
+		Console::putTextLine(L"Obs³uga Naziemna >> Witamy, masz do nas jak¹œ sprawê?");
+	}
 }
 
 void Planet::shopingTime(Ship& statek) {
-	cout << "Mozemy odkupic od Ciebie towar za " << GetPrice() << "\nIle chcesz sprzedac?\n";
-	int i;
+	wstring temp, temp2;
+	temp2 = to_wstring(GetPrice());
+	temp = L"Obs³uga Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".\nChcia³byœ sprzedac?";
+	Console::putTextLine(temp);
+	/*int i;
+	cin >> i;
 	if (i <= statek.GetStuff()) {
 		cout << "Bierzemy\n";
 		statek.SetStuff(statek.GetStuff() - i);
@@ -81,5 +102,20 @@ void Planet::shopingTime(Ship& statek) {
 	}
 	else {
 		cout << "Nie masz tyle\n";
+	}*/
+}
+
+void Planet::negativeAns() {
+	Console::putTextLine(L"Obs³uga Naziemna >> Nie to nie, mo¿e nastêpnym razem\n");
+}
+
+void Planet::positiveAns(int i, Ship& statek) {
+	if (i <= statek.GetStuff()) {
+		Console::putTextLine(L"Obs³uga Naziemna >> Bierzemy\n");
+		statek.SetStuff(statek.GetStuff() - i);
+		statek.setMoney(GetPrice()*i);
+	}
+	else {
+		Console::putTextLine(L"Obs³uga Naziemna >> Nie masz tyle\n");
 	}
 }

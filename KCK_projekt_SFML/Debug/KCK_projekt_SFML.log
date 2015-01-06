@@ -1,14 +1,26 @@
-﻿Build started 2014-12-15 13:43:59.
+﻿Build started 2015-01-06 14:47:06.
      1>Project "C:\Users\user\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Planet.cpp
-         Planet.cpp
-     1>c:\users\user\documents\github\kck\kck_projekt_sfml\planet.cpp(35): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\user\documents\github\kck\kck_projekt_sfml\planet.cpp(43): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\user\documents\github\kck\kck_projekt_sfml\planet.cpp(47): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
-     1>c:\users\user\documents\github\kck\kck_projekt_sfml\planet.cpp(77): error C4700: uninitialized local variable 'i' used
-     1>Done Building Project "C:\Users\user\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BorderMan.cpp
+         BorderMan.cpp
+     1>c:\users\user\documents\github\kck\kck_projekt_sfml\borderman.cpp(13): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\BorderMan.obj
+         Debug\Console.obj
+         Debug\Parameter.obj
+         Debug\Pirate.obj
+         Debug\Window.obj
+         Debug\GameScreen.obj
+         Debug\Help.obj
+         Debug\Human.obj
+         Debug\Main.obj
+         Debug\MotherPlanet.obj
+         Debug\Planet.obj
+         Debug\Ship.obj
+         Debug\stdafx.obj
+         KCK_projekt_SFML.vcxproj -> C:\Users\user\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.exe
+     1>Done Building Project "C:\Users\user\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.67
+Time Elapsed 00:00:01.42
