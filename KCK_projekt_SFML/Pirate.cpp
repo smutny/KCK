@@ -7,6 +7,7 @@
 
 
 unsigned int Pirate::chance;
+bool Pirate::busy = false;
 
 
 void Pirate::attack(int x, int y, Ship &s)
@@ -20,6 +21,7 @@ void Pirate::attack(int x, int y, Ship &s)
 		//Pirate::action(s);
 		wstring text, temp2;
 		temp2 = to_wstring(Pirate::GetPrice());
+		Pirate::busy = true;
 		text = L"Piraci >> Zaplac " + temp2 + L" albo spadaj!";
 		Console::putTextLine(text);
 	}
@@ -73,6 +75,7 @@ void Pirate::negativeAnswer(Ship& statek) {
 void Pirate::positiveAnswer(Ship& statek) {
 	if (Pirate::GetPrice() < statek.getMoney()) {
 		Console::putTextLine(L"Piraci >> Dobra, lec");
+		Pirate::busy = false;
 		statek.setMoney(statek.getMoney() - Pirate::GetPrice());
 		statek.isStuck = false;
 	}
