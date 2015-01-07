@@ -15,6 +15,7 @@ void Pirate::attack(int x, int y, Ship &s)
 	if (((x % 70 == 0 || y % 70 == 0) && chance <=100) && s.isStuck == false)
 	{
 		s.isStuck = true; // <-- Bez tego dzia³a konsola :(
+		s.setPosition(x, y);
 		//cout << "YAARrrr! " << s.isStuck << endl;
 		//Pirate::action(s);
 		wstring text, temp2;

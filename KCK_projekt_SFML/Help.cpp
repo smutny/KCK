@@ -4,6 +4,9 @@
 Ship* Help::statek;
 float * Help::dt;
 map<string, Planet*> Help::planety;
+string Help::komenda;
+string Help::argument;
+bool Help::flaga = false;
 
 Help::Help()
 {
@@ -148,7 +151,9 @@ std::wstring Help::textAnalysis(std::wstring text)
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
-						wykonaj_komende(tokens.at(j), tokens.at(i));
+						komenda = tokens.at(j);
+						argument = tokens.at(i);
+						flaga = true;
 						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
 					}
 				}
@@ -161,7 +166,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 	return L"Komenda nieznana";
 }
 
-void Help::wykonaj_komende(string komenda, string argument)
+void Help::wykonaj_komende()
 {
 	if (komenda == "lec")
 	{
@@ -177,6 +182,8 @@ void Help::wykonaj_komende(string komenda, string argument)
 		}
 	}
 	
+
+	flaga = false;
 }
 
 void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> planets)

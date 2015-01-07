@@ -39,6 +39,10 @@ int main(int argv, char* argc[])
 		
 		//auto dt = clock.restart().asSeconds();
 		Help::podaj_statek(&s, &dt, planets);
+		if (Help::flaga)
+		{
+			Help::wykonaj_komende();
+		}
 		sf::Event event;
 		while (Window::pollEvent(event))
 		{
