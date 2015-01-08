@@ -5,6 +5,8 @@
 #include "BorderMan.h"
 #include "Ship.h"
 
+
+
 void Planet::display()
 {
 	Window::draw(planetSprite);
@@ -81,7 +83,7 @@ bool Planet::onPlanet(Ship& statek) {
 
 void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
 	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
-		b.action(statek);
+		b.action(statek,planeta);
 	}
 	if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
 		Console::putTextLine(L"Obs³uga Naziemna >> Witamy, masz do nas jak¹œ sprawê?");

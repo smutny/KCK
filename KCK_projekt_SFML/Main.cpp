@@ -34,6 +34,8 @@ int main(int argv, char* argc[])
 	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
 	 planets["Jowisz"] = new Planet(290, 140, 3);
 	 planets["Neptun"] = new Planet(420, 290, 4);
+	 bool shipOnPlanet = false;
+	 pair<string, Planet*> currentPlanet = make_pair("Merkury", planets["Merkury"]);
 	 dt = clock.restart().asSeconds();
 	while (Window::isOpen())
 	{
@@ -43,6 +45,22 @@ int main(int argv, char* argc[])
 		if (Help::flaga)
 		{
 			wykonaj_komende();
+		}
+		if (!shipOnPlanet)
+		{
+			for (auto planet : planets)
+			{
+				if (planet.second->onPlanet(s))
+				{
+					planet.second->welcome(s, *planet.second, b);
+					currentPlanet = planet;
+					shipOnPlanet = true;
+				}
+			}
+		}
+		if (currentPlanet.second->onPlanet(s) == false)
+		{
+			shipOnPlanet = false;
 		}
 		sf::Event event;
 		while (Window::pollEvent(event))
@@ -98,14 +116,16 @@ void wykonaj_komende()
 	{
 		if (Pirate::busy)
 		{
+			cout << "pirat";
 			p1.positiveAnswer(s);
 		}
 		if (BorderMan::busy)
 		{
-			for each(pair<string, Planet*> a in planets)
+			for each(auto a in planets)
 			{
 				if (a.second->onPlanet(s))
 				{
+					cout << "granicznik";
 					b.positiveAns(*a.second,s);
 				}
 			}

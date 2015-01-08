@@ -10,7 +10,7 @@ public:
 	BorderMan();
 	~BorderMan();
 
-	void action(Ship& statek);
+	void action(Ship& statek, Planet& p);
 
 	void negativeAns(Planet& p);
 	void positiveAns(Planet& p, Ship& s);

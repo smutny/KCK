@@ -21,12 +21,13 @@ BorderMan::BorderMan() {
 
 BorderMan::~BorderMan(){}
 
-void BorderMan::action(Ship& statek) {
+void BorderMan::action(Ship& statek, Planet& p) {
 	wstring text, text2;
 	text = to_wstring(Human::GetPrice());
-	BorderMan::busy = true;
+	p.SetBoolFalse();
 	text2 = L"Zaplac " + text + L" albo spadaj!";
 	Console::putTextLine(text2);
+	BorderMan::busy = true;
 	//cout << "Zaplac " << Human::GetPrice() << " albo spadaj!\n";
 	/*int  temp;
 	cin >> temp;
@@ -51,8 +52,9 @@ void BorderMan::negativeAns(Planet& p) {
 void BorderMan::positiveAns(Planet& p, Ship& s) {
 	if (p.CanWeShop() == true && GetPrice() <= s.getMoney()) {
 		s.setMoney(s.getMoney() - GetPrice());
-		BorderMan::busy = false;
 		Console::putTextLine(L"Przekupiona Obs³uga Graniczna >> Ooo tak, moja kochane pinion¿ki :3");
+		BorderMan::busy = false;
+		p.SetBoolTrue();
 	}
 	else {
 		negativeAns(p);

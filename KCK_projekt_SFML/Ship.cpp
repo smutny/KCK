@@ -20,7 +20,7 @@ Ship::~Ship()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
-	int mnoznik = 500;
+	int mnoznik = 100;
 	movementCounter++;
 
 		vx = vy = 0;
