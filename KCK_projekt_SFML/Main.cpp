@@ -42,10 +42,11 @@ int main(int argv, char* argc[])
 		
 		//auto dt = clock.restart().asSeconds();
 		Help::podaj_statek(&s, &dt, planets);
-		if (Help::flaga)
-		{
+
+		//if (Help::flaga)
+		//{
 			wykonaj_komende();
-		}
+	//	}
 		if (!shipOnPlanet)
 		{
 			for (auto planet : planets)
@@ -104,7 +105,7 @@ void wykonaj_komende()
 	if (Help::komenda == "lec")
 	{
 		if (Help::argument == "lewo" || Help::argument == "prawo" || Help::argument == "gora" || Help::argument == "dol")
-		{
+		{	
 			s.fly(dt, Help::s2ws(Help::argument));
 		}
 		else

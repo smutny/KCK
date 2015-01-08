@@ -129,6 +129,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		{
 			komenda == "plac";
 			flaga = true;
+			statek->isStuck = false;
 			return L"Placimy, Kapitanie!";
 		}
 		else
@@ -167,14 +168,15 @@ std::wstring Help::textAnalysis(std::wstring text)
 				}
 
 			}
+		
 			return L"Komenda \"" + s2ws(tokens.at(j)) + L"\" wymaga argumentu!";
 			j++;
 		}
 	}
 	return L"Komenda nieznana";
 }
-
-/*void Help::wykonaj_komende()
+/**
+void Help::wykonaj_komende()
 {
 	if (komenda == "lec")
 	{
@@ -199,7 +201,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 	
 
 	flaga = false;
-}*/
+} */
 
 void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> planets)
 {
