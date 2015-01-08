@@ -13,18 +13,17 @@ bool Pirate::busy = false;
 void Pirate::attack(int x, int y, Ship &s)
 {
 
-	/*if (((x % 70 == 0 || y % 70 == 0) && chance <=100) && s.isStuck == false)
+	if (((x % 70 == 0 || y % 70 == 0) && chance <= 100) && s.isStuck == false && s.wasAttacked == false)
 	{
 		s.isStuck = true; // <-- Bez tego dzia³a konsola :(
 		s.setPosition(x, y);
-		//cout << "YAARrrr! " << s.isStuck << endl;
-		//Pirate::action(s);
 		wstring text, temp2;
 		temp2 = to_wstring(Pirate::GetPrice());
 		Pirate::busy = true;
 		text = L"Piraci >> Zaplac " + temp2 + L" albo spadaj!";
 		Console::putTextLine(text);
-	}*/
+		s.wasAttacked = true;
+	}
 
 }
 

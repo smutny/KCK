@@ -8,6 +8,7 @@ public:
 	int getX() { return this->x; }
 	int getY() { return this->y; }
 
+
 	void display();
 
 	void fly(float& dt, wstring rozkaz,  int counterLimit = 70);
@@ -23,6 +24,8 @@ public:
 	void comeBack();
 	void setPosition(float x = 460, float y = 460);
 	bool isStuck;
+	bool wasAttacked = false;
+
 	int movementCounter = 0;
 	// movmentCounter jako public poniewaz funkcja wydajaca rozkaz np."prawo" bedzie musiala go zerowac
 private:

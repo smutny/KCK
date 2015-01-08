@@ -20,7 +20,7 @@ Ship::~Ship()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
-	int mnoznik = 100;
+	//int mnoznik = 100;
 	movementCounter++;
 
 		vx = vy = 0;
@@ -40,17 +40,16 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 		{
 			comeBack();
 
-			x += mnoznik*vx * dt;
-			y += mnoznik*vy * dt;
+			x += vx * dt;
+			y += vy * dt;
 		}
+
+
 }
 
 void Ship::flyTo(float& dt, Planet& p)
 {
-	Pirate pirat;
-	while (this->getX() < p.getX() || this->getX() > p.getX() || this->getY() > p.getY() || this->getY() < p.getY() /*|| isStuck==false*/)
-	{
-		//pirat.attack(this->getX(), this->getY(), *this);
+
 		if (this->getX() < p.getX())
 		{
 			this->fly(dt, L"prawo", 7000);
@@ -71,7 +70,7 @@ void Ship::flyTo(float& dt, Planet& p)
 			this->fly(dt, L"dol", 7000);
 			this->focus(p);
 		}
-	}
+	
 }
 
 
