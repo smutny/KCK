@@ -125,7 +125,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		{
 			j++;
 		}
-		if (ssearch(tokens.at(j), "plac") != 1000)
+		else if (ssearch(tokens.at(j), "plac") != 1000)
 		{
 			komenda == "plac";
 			flaga = true;

@@ -20,6 +20,7 @@ Ship::~Ship()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
+	int mnoznik = 500;
 	movementCounter++;
 
 		vx = vy = 0;
@@ -39,8 +40,8 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 		{
 			comeBack();
 
-			x += vx * dt;
-			y += vy * dt;
+			x += mnoznik*vx * dt;
+			y += mnoznik*vy * dt;
 		}
 }
 
