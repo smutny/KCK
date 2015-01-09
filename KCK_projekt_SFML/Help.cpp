@@ -130,6 +130,8 @@ std::wstring Help::textAnalysis(std::wstring text)
 			komenda == "plac";
 			flaga = true;
 			statek->isStuck = false;
+			statek->setMoney(statek->getMoney() - 220);
+			
 			return L"Placimy, Kapitanie!";
 		}
 		else
@@ -163,6 +165,12 @@ std::wstring Help::textAnalysis(std::wstring text)
 						komenda = tokens.at(j);
 						argument = tokens.at(i);
 						flaga = true;
+
+						//////
+
+
+						statek->isStuckv2 = false;
+						//////
 						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
 					}
 				}

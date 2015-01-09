@@ -17,10 +17,10 @@ Ship s; Pirate p1; BorderMan b;
 map<string, Planet*> planets;
 float dt;
 
+
 int main(int argv, char* argc[])
 {
-	//int hajsLeci = 232;
-
+	
 	Window::Window();
 	GameScreen::GameScreen();
 	Console::Console();
@@ -31,11 +31,13 @@ int main(int argv, char* argc[])
 
 
 	 planets["Merkury"] = new Planet(140, 140, 1);
-	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
+	 planets["Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
 	 planets["Jowisz"] = new Planet(290, 140, 3);
 	 planets["Neptun"] = new Planet(420, 290, 4);
 	 bool shipOnPlanet = false;
 	 pair<string, Planet*> currentPlanet = make_pair("Merkury", planets["Merkury"]);
+
+
 	 dt = clock.restart().asSeconds();
 	while (Window::isOpen())
 	{
@@ -78,7 +80,7 @@ int main(int argv, char* argc[])
 		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
 
-		for (auto planet : planets)
+		for (const auto& planet : planets)
 		{
 			planet.second->display();
 		}
@@ -87,13 +89,10 @@ int main(int argv, char* argc[])
 		string name = "Merkury";
 		//s.fly(dt, L"lewo");
 		//s.flyTo(dt, *planets[name]);
-		s.setMoney(10000);
+		
 		s.display();
 
-		
-
-		
-	Window::display();	
+		Window::display();	
 
 	}
 	return 0;
@@ -104,9 +103,12 @@ void wykonaj_komende()
 {
 	if (Help::komenda == "lec")
 	{
+		
 		if (Help::argument == "lewo" || Help::argument == "prawo" || Help::argument == "gora" || Help::argument == "dol")
 		{	
+			
 			s.fly(dt, Help::s2ws(Help::argument));
+
 		}
 		else
 		{
@@ -122,7 +124,7 @@ void wykonaj_komende()
 		}
 		if (BorderMan::busy)
 		{
-			for each(auto a in planets)
+			for (const auto& a : planets)
 			{
 				if (a.second->onPlanet(s))
 				{

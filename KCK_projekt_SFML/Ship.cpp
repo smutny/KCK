@@ -9,7 +9,7 @@ Ship::Ship()
 	setTexture();
 	setPosition();
 
-	money = 10000;
+	money = 1000;
 	isStuck = false;
 }
 
@@ -20,20 +20,21 @@ Ship::~Ship()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
+	
 	//int mnoznik = 100;
 	movementCounter++;
 
 		vx = vy = 0;
-		if (rozkaz == L"lewo" && isStuck == false) 
+		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false) 
 			vx += -10;
 	
-		if (rozkaz == L"prawo" && isStuck == false) 
+		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
 			vx += 65;
 		
-		if (rozkaz == L"gora" && isStuck == false) 
+		if (rozkaz == L"gora" && isStuck == false && isStuckv2 == false) 
 			vy += -10;
 		
-		if (rozkaz == L"dol" && isStuck == false) 
+		if (rozkaz == L"dol" && isStuck == false && isStuckv2 == false) 
 			vy += 65;
 		
 		if (movementCounter <= counterLimit)
@@ -43,6 +44,14 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			x += vx * dt;
 			y += vy * dt;
 		}
+		
+		if (movementCounter == counterLimit)
+		{
+			movementCounter = 0;
+			isStuckv2 = true;
+		}
+
+
 
 
 }
@@ -67,7 +76,7 @@ void Ship::flyTo(float& dt, Planet& p)
 		}
 		else if (this->getY() < p.getY())
 		{
-			this->fly(dt, L"dol", 7000);
+			fly(dt, L"dol", 7000);
 			this->focus(p);
 		}
 	
