@@ -1,19 +1,19 @@
-﻿Build started 2015-01-08 21:10:33.
+﻿Build started 2015-01-09 21:08:30.
      1>Project "C:\Users\Gracjan\Documents\GitHub\KCK-1\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Help.cpp
          Help.cpp
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(50): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(47): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(49): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(52): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(55): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(96): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(99): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(117): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(120): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(143): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(146): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(156): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(158): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(90): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(108): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(111): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(136): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(139): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(149): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gracjan\documents\github\kck-1\kck_projekt_sfml\help.cpp(151): warning C4018: '<' : signed/unsigned mismatch
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\BorderMan.obj
          Debug\Console.obj
@@ -33,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.06
+Time Elapsed 00:00:03.04

@@ -9,7 +9,7 @@ Ship::Ship()
 	setTexture();
 	setPosition();
 
-	money = 10000;
+	money = 1000;
 	isStuck = false;
 }
 
@@ -20,21 +20,22 @@ Ship::~Ship()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
+	
 	//int mnoznik = 100;
 	movementCounter++;
 
 		vx = vy = 0;
-		if (rozkaz == L"lewo" && isStuck == false) 
+		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false) 
 			vx += -10;
 	
-		if (rozkaz == L"prawo" && isStuck == false) 
-			vx += 65;
+		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
+			vx += 165;
 		
-		if (rozkaz == L"gora" && isStuck == false) 
+		if (rozkaz == L"gora" && isStuck == false && isStuckv2 == false) 
 			vy += -10;
 		
-		if (rozkaz == L"dol" && isStuck == false) 
-			vy += 65;
+		if (rozkaz == L"dol" && isStuck == false && isStuckv2 == false) 
+			vy += 165;
 		
 		if (movementCounter <= counterLimit)
 		{
@@ -43,6 +44,14 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			x += vx * dt;
 			y += vy * dt;
 		}
+		
+		if (movementCounter == counterLimit)
+		{
+			movementCounter = 0;
+			isStuckv2 = true;
+		}
+
+
 
 
 }
@@ -50,25 +59,25 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 void Ship::flyTo(float& dt, Planet& p)
 {
 
-		if (this->getX() < p.getX())
+		if (getX() < p.getX())
 		{
-			this->fly(dt, L"prawo", 7000);
-			this->focus(p);
+			fly(dt, L"prawo", 7000);
+			focus(p);
 		}
-		else if (this->getX() > p.getX())
+		else if (getX() > p.getX())
 		{
-			this->fly(dt, L"lewo", 7000);
-			this->focus(p);
+			fly(dt, L"lewo", 7000);
+			focus(p);
 		}
-		else if (this->getY() > p.getY())
+		else if (getY() > p.getY())
 		{
-			this->fly(dt, L"gora", 7000);
-			this->focus(p);
+			fly(dt, L"gora", 7000);
+			focus(p);
 		}
-		else if (this->getY() < p.getY())
+		else if (getY() < p.getY())
 		{
-			this->fly(dt, L"dol", 7000);
-			this->focus(p);
+			fly(dt, L"dol", 7000);
+			focus(p);
 		}
 	
 }
@@ -76,14 +85,14 @@ void Ship::flyTo(float& dt, Planet& p)
 
 void Ship::comeBack()
 {
-	if (this->getX() > 460)
-		this->x = 460;
-	if (this->getX() < 30)
-		this->x = 30;
-	if (this->getY() < 30)
-		this->y = 30;
-	if (this->getY() > 460)
-		this->y = 460;
+	if (getX() > 460)
+		x = 460;
+	if (getX() < 30)
+		x = 30;
+	if (getY() < 30)
+		y = 30;
+	if (getY() > 460)
+		y = 460;
 }
 
 void Ship::display()
@@ -94,10 +103,10 @@ void Ship::display()
 
 void Ship::focus(Planet& p)
 {
-	if (this->getX() > p.getX() &&
-		this->getX() < p.getX() + 70 &&
-		this->getY() > p.getY() &&
-		this->getY() < p.getY() + 70
+	if (getX() > p.getX() &&
+		getX() < p.getX() + 70 &&
+		getY() > p.getY() &&
+		getY() < p.getY() + 70
 		)
 
 		isStuck = true;

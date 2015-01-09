@@ -24,6 +24,9 @@ public:
 	void comeBack();
 	void setPosition(float x = 460, float y = 460);
 	bool isStuck;
+	///////
+		bool isStuckv2 = false;
+	//////
 	bool wasAttacked = false;
 
 	int movementCounter = 0;
