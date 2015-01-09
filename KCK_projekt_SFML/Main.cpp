@@ -14,7 +14,7 @@
 
 void wykonaj_komende();
 Ship s; Pirate p1; BorderMan b;
-map<string, Planet*> planets;
+map<wstring, Planet*> planets;
 float dt;
 
 
@@ -30,12 +30,12 @@ int main(int argv, char* argc[])
 	Parameter money(15, 550, 600, "arial.ttf", L"Pieni¹dze: ");
 
 
-	 planets["Merkury"] = new Planet(140, 140, 1);
-	 planets["Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
-	 planets["Jowisz"] = new Planet(290, 140, 3);
-	 planets["Neptun"] = new Planet(420, 290, 4);
+	 planets[L"Merkury"] = new Planet(140, 140, 1);
+	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
+	 planets[L"Jowisz"] = new Planet(290, 140, 3);
+	 planets[L"Neptun"] = new Planet(420, 290, 4);
 	 bool shipOnPlanet = false;
-	 pair<string, Planet*> currentPlanet = make_pair("Merkury", planets["Merkury"]);
+	 pair<wstring, Planet*> currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 
 
 	 dt = clock.restart().asSeconds();
@@ -101,13 +101,13 @@ int main(int argv, char* argc[])
 
 void wykonaj_komende()
 {
-	if (Help::komenda == "lec")
+	if (Help::komenda == L"lec")
 	{
 		
-		if (Help::argument == "lewo" || Help::argument == "prawo" || Help::argument == "gora" || Help::argument == "dol")
+		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"gora" || Help::argument == L"dol")
 		{	
 			
-			s.fly(dt, Help::s2ws(Help::argument));
+			s.fly(dt, Help::argument);
 
 		}
 		else
@@ -115,7 +115,7 @@ void wykonaj_komende()
 			s.flyTo(dt, *planets[Help::argument]);
 		}
 	}
-	if (Help::komenda == "plac")
+	if (Help::komenda == L"plac")
 	{
 		if (Pirate::busy)
 		{
