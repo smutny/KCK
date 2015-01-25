@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 
 #include "BorderMan.h"
 #include "Planet.h"
@@ -37,7 +37,7 @@ void BorderMan::action(Ship& statek, Planet& p) {
 	statek.isStuck = false;
 	}
 	else {
-	cout << "Spadaj, nie chcê Ciê tu wiêcej widzieæ\n"; //Smuteg
+	cout << "Spadaj, nie chcÃª CiÃª tu wiÃªcej widzieÃ¦\n"; //Smuteg
 	p.SetBoolFalse();
 	statek.isStuck = false;
 	}
@@ -46,20 +46,23 @@ void BorderMan::action(Ship& statek, Planet& p) {
 
 void BorderMan::negativeAns(Planet& p) {
 	p.SetBoolFalse();
-	Console::putTextLine(L"Skorumpowana Obs³uga Graniczna >> Pff, tylko tyle? Nie pokazuj  siê tu wiêcej.");
+	Console::putTextLine(L"Skorumpowana ObsÅ‚uga Graniczna >> Pff, tylko tyle? Nie pokazuj siÄ™ tu wiÄ™cej.");
+	BorderMan::busy = false;
+	p.visited = true;
 }
 
 void BorderMan::positiveAns(Planet& p, Ship& s) {
 	if (p.CanWeShop() == true && GetPrice() <= s.getMoney()) {
 		s.setMoney(s.getMoney() - GetPrice());
-		Console::putTextLine(L"Przekupiona Obs³uga Graniczna >> Ooo tak, moja kochane pinion¿ki :3");
+		Console::putTextLine(L"Przekupiona ObsÅ‚uga Graniczna >> Ooo tak, moja kochane pinionÅ¼ki :3");
 		BorderMan::busy = false;
 		p.SetBoolTrue();
+		p.visited = true;
 	}
 	else {
 		negativeAns(p);
 	}
 }
 
-//Mo¿e dodamy coœ w main co po up³ywie np 30-60 sekund ustawi planety na dostêpne? 0o
+//MoÂ¿e dodamy coÅ“ w main co po upÂ³ywie np 30-60 sekund ustawi planety na dostÃªpne? 0o
 //Planeta matka  ustawia wszystkie na true.

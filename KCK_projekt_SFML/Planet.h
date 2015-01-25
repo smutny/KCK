@@ -27,6 +27,7 @@ public:
 	void shopingTime(Ship& statek);
 	void positiveAns(int i, Ship& statek);
 	void negativeAns();
+	bool visited;
 
 private:
 	int pprice;

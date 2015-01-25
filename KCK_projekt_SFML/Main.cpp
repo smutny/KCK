@@ -16,7 +16,9 @@ void wykonaj_komende();
 Ship s; Pirate p1; BorderMan b;
 map<wstring, Planet*> planets;
 float dt;
-
+pair<wstring, Planet*> currentPlanet;
+bool shipOnPlanet = false;
+bool busy = true;
 
 int main(int argv, char* argc[])
 {
@@ -34,9 +36,8 @@ int main(int argv, char* argc[])
 	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
 	 planets[L"Jowisz"] = new Planet(290, 140, 3);
 	 planets[L"Neptun"] = new Planet(420, 290, 4);
-	 bool shipOnPlanet = false;
-	 pair<wstring, Planet*> currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 
+	 currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 
 	 dt = clock.restart().asSeconds();
 	while (Window::isOpen())
@@ -64,6 +65,7 @@ int main(int argv, char* argc[])
 		if (currentPlanet.second->onPlanet(s) == false)
 		{
 			shipOnPlanet = false;
+			busy = false;
 		}
 		sf::Event event;
 		while (Window::pollEvent(event))
@@ -101,7 +103,12 @@ int main(int argv, char* argc[])
 
 void wykonaj_komende()
 {
-	if (Help::komenda == L"lec")
+	if (Help::komenda == L"sprzedaj" && shipOnPlanet && !busy)
+	{
+		currentPlanet.second->shopingTime(s);
+		busy = true;
+	}
+	if (Help::komenda == L"leć")
 	{
 		
 		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
@@ -115,7 +122,7 @@ void wykonaj_komende()
 			s.flyTo(dt, *planets[Help::argument]);
 		}
 	}
-	if (Help::komenda == L"plac")
+	if (Help::komenda == L"płać")
 	{
 		if (Pirate::busy)
 		{

@@ -69,12 +69,11 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"czesc", L"siem", L"hej", L"doberek", L"plac" };
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj"};
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
-	vector<wstring> operatory = { L"lec", L"kup"};
-	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" };
-	vector<wstring> przekupowanie = { L"celn", L"gran", L"pira" };
-	vector<vector<wstring>*> wskazniki = { &latanie, &przekupowanie };
+	vector<wstring> operatory = { L"leć", L"sprzedaj"};
+	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" , L"Uran", L"Jowisz", L"Neptun", L"Matk", L"matk"};
+	vector<vector<wstring>*> wskazniki = { &latanie };
 
 	
 	vector<wstring> tokens = tokenize(text);
@@ -116,14 +115,20 @@ std::wstring Help::textAnalysis(std::wstring text)
 		{
 			j++;
 		}
-		else if (ssearch(tokens.at(j), L"plac") != 1000)
+		else if (ssearch(tokens.at(j), L"płać") != 1000)
 		{
-			komenda == L"plac";
+			komenda = L"płać";
 			flaga = true;
 			statek->isStuck = false;
-			statek->setMoney(statek->getMoney() - 220);
+			//statek->setMoney(statek->getMoney() - 220);
 			
-			return L"Placimy, Kapitanie!";
+			return L"Płacimy, Kapitanie!";
+		}
+		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
+		{
+			komenda = L"sprzedaj";
+			flaga = true;
+			return L"Sprzedajemy!";
 		}
 		else
 		{
@@ -153,14 +158,14 @@ std::wstring Help::textAnalysis(std::wstring text)
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
-						komenda = tokens.at(j);
-						argument = tokens.at(i);
+						komenda = operatory.at(k);//tokens.at(j);
+						argument = (*wskazniki.at(k)).at(l);//tokens.at(i);
 						flaga = true;
 
 						//////
 						statek->isStuckv2 = false;
 						//////
-						return L"Wykonuje komende \"" + tokens.at(j) + L" " + tokens.at(i) + L"\"";
+						return L"Wykonuję komendę \"" + tokens.at(j) + L" " + tokens.at(i) + L"\"";
 					}
 				}
 
@@ -172,33 +177,6 @@ std::wstring Help::textAnalysis(std::wstring text)
 	}
 	return L"Komenda nieznana";
 }
-/**
-void Help::wykonaj_komende()
-{
-	if (komenda == "lec")
-	{
-		if (argument == "lewo" || argument == "prawo" || argument == "gora" || argument == "dol" )
-		{
-			statek->fly(*dt, s2ws(argument));
-		}
-		else
-		{
-			//map<string, Planet*> temp = *planety;
-			string name = "Merkury";
-			statek->flyTo(*	dt, *planety[name]);
-		}
-	}
-	if (komenda == "plac")
-	{
-		if (Pirate::busy)
-		{
-			Pirate::positiveAnswer(*statek);
-		}
-	}
-	
-
-	flaga = false;
-} */
 
 void Help::podaj_statek(Ship * st, float * time, map<wstring, Planet*> planets)
 {
