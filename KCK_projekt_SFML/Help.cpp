@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Help.h"
 #include "BorderMan.h"
 #include "Pirate.h"
@@ -70,9 +70,9 @@ std::wstring Help::textAnalysis(std::wstring text)
 	//slownik
 
 	vector<wstring> bezargumentowe = { L"wita", L"czesc", L"siem", L"hej", L"doberek", L"plac" };
-	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj" };
+	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
 	vector<wstring> operatory = { L"lec", L"kup"};
-	vector<wstring> latanie = { L"prawo", L"lewo", L"gora", L"dol", L"Merkury" };
+	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" };
 	vector<wstring> przekupowanie = { L"celn", L"gran", L"pira" };
 	vector<vector<wstring>*> wskazniki = { &latanie, &przekupowanie };
 

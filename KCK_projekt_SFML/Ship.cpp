@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Window.h"
 #include "Planet.h"
 #include "Ship.h"
@@ -29,12 +29,12 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			vx += -10;
 	
 		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
-			vx += 165;
+			vx += 500;
 		
-		if (rozkaz == L"gora" && isStuck == false && isStuckv2 == false) 
+		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false) 
 			vy += -10;
 		
-		if (rozkaz == L"dol" && isStuck == false && isStuckv2 == false) 
+		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false) 
 			vy += 165;
 		
 		if (movementCounter <= counterLimit)
@@ -71,12 +71,12 @@ void Ship::flyTo(float& dt, Planet& p)
 		}
 		else if (getY() > p.getY())
 		{
-			fly(dt, L"gora", 7000);
+			fly(dt, L"góra", 7000);
 			focus(p);
 		}
 		else if (getY() < p.getY())
 		{
-			fly(dt, L"dol", 7000);
+			fly(dt, L"dół", 7000);
 			focus(p);
 		}
 	

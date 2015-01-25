@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "Window.h"
 #include "Planet.h"
 #include "Console.h"
@@ -86,14 +86,18 @@ void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
 		b.action(statek,planeta);
 	}
 	if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
-		Console::putTextLine(L"Obs³uga Naziemna >> Witamy, masz do nas jak¹œ sprawê?");
+		Console::putTextLine(L"ObsÅ‚uga Naziemna >> Witamy, masz do nas jakÄ…Å› sprawÄ™?");
+	}
+	else if ((interactive == false) && (onPlanet(statek) == true))
+	{
+		Console::putTextLine(L"U nas juÅ¼ byÅ‚eÅ›, leÄ‡ dalej.");
 	}
 }
 
 void Planet::shopingTime(Ship& statek) {
 	wstring temp, temp2;
 	temp2 = to_wstring(GetPrice());
-	temp = L"Obs³uga Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".\nChcia³byœ sprzedac?";
+	temp = L"ObsÅ‚uga Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".\nChciaÅ‚byÅ› sprzedaÄ‡?";
 	Console::putTextLine(temp);
 	/*int i;
 	cin >> i;
@@ -108,16 +112,16 @@ void Planet::shopingTime(Ship& statek) {
 }
 
 void Planet::negativeAns() {
-	Console::putTextLine(L"Obs³uga Naziemna >> Nie to nie, mo¿e nastêpnym razem\n");
+	Console::putTextLine(L"ObsÅ‚uga Naziemna >> Nie to nie, moÅ¼e nastÄ™pnym razem\n");
 }
 
 void Planet::positiveAns(int i, Ship& statek) {
 	if (i <= statek.GetStuff()) {
-		Console::putTextLine(L"Obs³uga Naziemna >> Bierzemy\n");
+		Console::putTextLine(L"ObsÅ‚uga Naziemna >> Bierzemy\n");
 		statek.SetStuff(statek.GetStuff() - i);
 		statek.setMoney(GetPrice()*i);
 	}
 	else {
-		Console::putTextLine(L"Obs³uga Naziemna >> Nie masz tyle\n");
+		Console::putTextLine(L"ObsÅ‚uga Naziemna >> Nie masz tyle\n");
 	}
 }

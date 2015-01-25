@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "stdafx.h"
 
@@ -27,7 +27,7 @@ int main(int argv, char* argc[])
 
 	sf::Clock clock;
 	
-	Parameter money(15, 550, 600, "arial.ttf", L"Pieni�dze: ");
+	Parameter money(15, 550, 600, "arial.ttf", L"Pieniądze: ");
 
 
 	 planets[L"Merkury"] = new Planet(140, 140, 1);
@@ -104,7 +104,7 @@ void wykonaj_komende()
 	if (Help::komenda == L"lec")
 	{
 		
-		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"gora" || Help::argument == L"dol")
+		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
 		{	
 			
 			s.fly(dt, Help::argument);
