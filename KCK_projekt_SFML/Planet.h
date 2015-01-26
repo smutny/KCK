@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Ship.h"
+#include "BorderMan.h"
 
 class Planet
 {
@@ -20,8 +21,13 @@ public:
 	void SetBoolFalse();
 	bool CanWeShop();
 
-	void welcome();
+	bool onPlanet(Ship& statek);
+	
+	void welcome(Ship& statek, Planet& planeta, BorderMan& b);
 	void shopingTime(Ship& statek);
+	void positiveAns(int i, Ship& statek);
+	void negativeAns();
+	bool visited;
 
 private:
 	int pprice;
@@ -29,6 +35,7 @@ private:
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
 	bool interactive;
+
 	
 	 sf::Texture planetTexture;
 	 sf::Sprite planetSprite;

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "stdafx.h"
 
@@ -10,34 +10,63 @@
 #include "Parameter.h"
 #include "Pirate.h"
 #include "Help.h"
+#include "BorderMan.h"
 
-
+void wykonaj_komende();
+Ship s; Pirate p1; BorderMan b;
+map<wstring, Planet*> planets;
+float dt;
+pair<wstring, Planet*> currentPlanet;
+bool shipOnPlanet = false;
+bool busy = true;
 
 int main(int argv, char* argc[])
 {
-	int hajsLeci = 232;
-
+	
 	Window::Window();
 	GameScreen::GameScreen();
 	Console::Console();
 
 	sf::Clock clock;
 	
-	Parameter money(15, 550, 600, "arial.ttf", L"Pieni�dze: ");
+	Parameter money(15, 550, 600, "arial.ttf", L"Pieniądze: ");
 
-	Ship s; Pirate p1;
-	
-	 map<string, Planet*> planets;
-	 planets["Merkury"] = new Planet(140, 140, 1);
-	 planets["Uran"] = new Planet(550, 550, 2); //70,440,2
-	 planets["Joiwsz"] = new Planet(290, 140, 3);
-	 planets["Neptun"] = new Planet(420, 290, 4);
-	 auto dt = clock.restart().asSeconds();
+
+	 planets[L"Merkury"] = new Planet(140, 140, 1);
+	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
+	 planets[L"Jowisz"] = new Planet(290, 140, 3);
+	 planets[L"Neptun"] = new Planet(420, 290, 4);
+
+	 currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
+
+	 dt = clock.restart().asSeconds();
 	while (Window::isOpen())
 	{
 		
 		//auto dt = clock.restart().asSeconds();
 		Help::podaj_statek(&s, &dt, planets);
+
+		//if (Help::flaga)
+		//{
+			wykonaj_komende();
+	//	}
+		if (!shipOnPlanet)
+		{
+			for (auto planet : planets)
+			{
+				if (planet.second->onPlanet(s))
+				{
+					planet.second->welcome(s, *planet.second, b);
+					currentPlanet = planet;
+					shipOnPlanet = true;
+				}
+			}
+		}
+		if (currentPlanet.second->onPlanet(s) == false)
+		{
+			shipOnPlanet = false;
+			busy = false;
+		}
 		sf::Event event;
 		while (Window::pollEvent(event))
 		{
@@ -50,10 +79,10 @@ int main(int argv, char* argc[])
 	GameScreen::display();
 	Console::display();
 
-		//p1.attack(s.getX(), s.getY(), s);
+		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
 
-		for (auto planet : planets)
+		for (const auto& planet : planets)
 		{
 			planet.second->display();
 		}
@@ -62,14 +91,57 @@ int main(int argv, char* argc[])
 		string name = "Merkury";
 		//s.fly(dt, L"lewo");
 		//s.flyTo(dt, *planets[name]);
-		s.setMoney(10000);
+		
 		s.display();
 
-		
-
-		
-	Window::display();	
+		Window::display();	
 
 	}
 	return 0;
+}
+
+
+void wykonaj_komende()
+{
+	if (Help::komenda == L"sprzedaj" && shipOnPlanet && !busy)
+	{
+		currentPlanet.second->shopingTime(s);
+		busy = true;
+	}
+	if (Help::komenda == L"leć")
+	{
+		
+		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
+		{	
+			
+			s.fly(dt, Help::argument);
+
+		}
+		else
+		{
+			s.flyTo(dt, *planets[Help::argument]);
+		}
+	}
+	if (Help::komenda == L"płać")
+	{
+		if (Pirate::busy)
+		{
+			cout << "pirat";
+			p1.positiveAnswer(s);
+		}
+		if (BorderMan::busy)
+		{
+			for (const auto& a : planets)
+			{
+				if (a.second->onPlanet(s))
+				{
+					cout << "granicznik";
+					b.positiveAns(*a.second,s);
+				}
+			}
+		}
+	}
+
+
+	Help::flaga = false;
 }

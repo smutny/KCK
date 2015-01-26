@@ -1,9 +1,14 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Help.h"
+#include "BorderMan.h"
+#include "Pirate.h"
 
 Ship* Help::statek;
 float * Help::dt;
-map<string, Planet*> Help::planety;
+map<wstring, Planet*> Help::planety;
+wstring Help::komenda;
+wstring Help::argument;
+bool Help::flaga = false;
 
 Help::Help()
 {
@@ -14,32 +19,29 @@ Help::~Help()
 {
 }
 
-
-std::wstring Help::s2ws(const std::string& s)
+std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 {
-	int len;
-	int slength = (int)s.length() + 1;
-	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
-	wchar_t* buf = new wchar_t[len];
-	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
-	std::wstring r(buf);
-	delete[] buf;
-	return r;
+	std::vector<std::wstring> tokens;
+	std::wstring temp;
+
+	for (const auto& letter : source)
+	{
+		if (letter != L' ')
+			temp.push_back(letter);
+
+		if (letter == L' ' || letter == source.back())
+		{
+			tokens.push_back(temp);
+			temp.clear();
+		}
+	}
+
+	return tokens;
 }
 
-std::string Help::ws2s(const std::wstring& s)
-{
-	int len;
-	int slength = (int)s.length() + 1;
-	len = WideCharToMultiByte(CP_ACP, 0, s.c_str(), slength, 0, 0, 0, 0);
-	char* buf = new char[len];
-	WideCharToMultiByte(CP_ACP, 0, s.c_str(), slength, buf, len, 0, 0);
-	std::string r(buf);
-	delete[] buf;
-	return r;
-}
 
-int Help::ssearch(string a, string b) //(gdzie, szukany)
+
+int Help::ssearch(wstring a, wstring b) //(gdzie, szukany)
 {
 	unsigned int present;
 	for (auto i = 0; i < a.length(); i++)
@@ -67,21 +69,14 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<string> bezargumentowe = { "wita", "czesc", "siem", "hej", "doberek" };
-	vector<string> przeklenstwa = { "kurw", "jeb", "pierd", "chuj" };
-	vector<string> operatory = { "lec", "kup"};
-	vector<string> latanie = { "prawo", "lewo", "gora", "dol", "Merkury" };
-	vector<string> przekupowanie = { "celn", "gran", "pira" };
-	vector<vector<string>*> wskazniki = { &latanie, &przekupowanie };
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj"};
+	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
+	vector<wstring> operatory = { L"leć", L"sprzedaj"};
+	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" , L"Uran", L"Jowisz", L"Neptun", L"Matk", L"matk"};
+	vector<vector<wstring>*> wskazniki = { &latanie };
 
-	//tokenizacja
-
-	string sentence = ws2s(text);
-	istringstream iss(sentence);
-	vector<string> tokens;
-	copy(istream_iterator<string>(iss),
-		istream_iterator<string>(),
-		back_inserter(tokens));
+	
+	vector<wstring> tokens = tokenize(text);
 
 	//analiza
 
@@ -120,9 +115,24 @@ std::wstring Help::textAnalysis(std::wstring text)
 		{
 			j++;
 		}
+		else if (ssearch(tokens.at(j), L"płać") != 1000)
+		{
+			komenda = L"płać";
+			flaga = true;
+			statek->isStuck = false;
+			//statek->setMoney(statek->getMoney() - 220);
+			
+			return L"Płacimy, Kapitanie!";
+		}
+		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
+		{
+			komenda = L"sprzedaj";
+			flaga = true;
+			return L"Sprzedajemy!";
+		}
 		else
 		{
-			return s2ws(tokens.at(j)) + L" Kapitanie!";
+			return tokens.at(j) + L" Kapitanie!";
 		}
 	}
 	j = 0;
@@ -148,38 +158,27 @@ std::wstring Help::textAnalysis(std::wstring text)
 					if (ssearch(tokens.at(i), (*wskazniki.at(k)).at(l)) != 1000)
 					{
 						//wywolanie funkcji operator z argumentem 
-						wykonaj_komende(tokens.at(j), tokens.at(i));
-						return L"Wykonuje komende \"" + s2ws(tokens.at(j)) + L" " + s2ws(tokens.at(i)) + L"\"";
+						komenda = operatory.at(k);//tokens.at(j);
+						argument = (*wskazniki.at(k)).at(l);//tokens.at(i);
+						flaga = true;
+
+						//////
+						statek->isStuckv2 = false;
+						//////
+						return L"Wykonuję komendę \"" + tokens.at(j) + L" " + tokens.at(i) + L"\"";
 					}
 				}
 
 			}
-			return L"Komenda \"" + s2ws(tokens.at(j)) + L"\" wymaga argumentu!";
+		
+			return L"Komenda \"" + tokens.at(j) + L"\" wymaga argumentu!";
 			j++;
 		}
 	}
 	return L"Komenda nieznana";
 }
 
-void Help::wykonaj_komende(string komenda, string argument)
-{
-	if (komenda == "lec")
-	{
-		if (argument == "lewo" || argument == "prawo" || argument == "gora" || argument == "dol" )
-		{
-			statek->fly(*dt, s2ws(argument));
-		}
-		else
-		{
-			//map<string, Planet*> temp = *planety;
-			string name = "Merkury";
-			statek->flyTo(*	dt, *planety[name]);
-		}
-	}
-	
-}
-
-void Help::podaj_statek(Ship * st, float * time, map<string, Planet*> planets)
+void Help::podaj_statek(Ship * st, float * time, map<wstring, Planet*> planets)
 {
 	statek = st;
 	dt = time;

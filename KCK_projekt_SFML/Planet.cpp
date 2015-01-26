@@ -1,6 +1,11 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Window.h"
 #include "Planet.h"
+#include "Console.h"
+#include "BorderMan.h"
+#include "Ship.h"
+
+
 
 void Planet::display()
 {
@@ -9,7 +14,7 @@ void Planet::display()
 
 Planet::Planet()
 {
-
+	bool visited = false;
 }
 
 
@@ -67,13 +72,35 @@ bool Planet::CanWeShop() {
 	return interactive;
 }
 
-void Planet::welcome() {
-	cout << "Witaj, chcia�bys cos sprzedac?\n";
+bool Planet::onPlanet(Ship& statek) {
+	if ((statek.getX() == getX()) && (statek.getY() == getY())) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
+	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
+		b.action(statek,planeta);
+	}
+	if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
+		Console::putTextLine(L"Obsługa Naziemna >> Witamy, chcesz nam coś sprzedać?");
+	}
+	if (planeta.visited)
+	{
+		Console::putTextLine(L"U nas już byłeś, leć dalej.");
+	}
 }
 
 void Planet::shopingTime(Ship& statek) {
-	cout << "Mozemy odkupic od Ciebie towar za " << GetPrice() << "\nIle chcesz sprzedac?\n";
-	int i;
+	wstring temp, temp2;
+	temp2 = L"700";// to_wstring(GetPrice());
+	temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
+	Console::putTextLine(temp);
+	/*int i;
+	cin >> i;
 	if (i <= statek.GetStuff()) {
 		cout << "Bierzemy\n";
 		statek.SetStuff(statek.GetStuff() - i);
@@ -81,5 +108,22 @@ void Planet::shopingTime(Ship& statek) {
 	}
 	else {
 		cout << "Nie masz tyle\n";
+	}*/
+}
+
+void Planet::negativeAns() {
+	Console::putTextLine(L"Obsługa Naziemna >> Nie to nie, może następnym razem\n");
+	visited = true;
+}
+
+void Planet::positiveAns(int i, Ship& statek) {
+	if (i <= statek.GetStuff()) {
+		Console::putTextLine(L"Obsługa Naziemna >> Bierzemy\n");
+		statek.SetStuff(statek.GetStuff() - i);
+		statek.setMoney(GetPrice()*i);
+		visited = true;
+	}
+	else {
+		Console::putTextLine(L"Obsługa Naziemna >> Nie masz tyle\n");
 	}
 }
