@@ -4,7 +4,17 @@ class MotherPlanet : public Planet
 public:
 	MotherPlanet();
 	~MotherPlanet();
+
+	int ilosc;
+	
+	void powitanieDom();
+
+	void kupowanie();
+
+	void odblokowanie();
 };
 
-//Resetowanie planet
-//Kupowanie stuff od nich
+/*
+int cena; <- Planet
+
+*/
