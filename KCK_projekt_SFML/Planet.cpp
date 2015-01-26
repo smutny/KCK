@@ -90,25 +90,20 @@ void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
 	}
 	if (planeta.visited)
 	{
-		Console::putTextLine(L"U nas już byłeś, leć dalej.");
+		Console::putTextLine(L"Obsługa Naziemna >> U nas już byłeś, leć dalej.");
 	}
 }
 
 void Planet::shopingTime(Ship& statek) {
-	wstring temp, temp2;
-	temp2 = L"700";// to_wstring(GetPrice());
-	temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
-	Console::putTextLine(temp);
-	/*int i;
-	cin >> i;
-	if (i <= statek.GetStuff()) {
-		cout << "Bierzemy\n";
-		statek.SetStuff(statek.GetStuff() - i);
-		statek.setMoney(GetPrice()*i);
+	if (interactive == true) {
+		wstring temp, temp2;
+		temp2 = L"700";// to_wstring(GetPrice());
+		temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
+		Console::putTextLine(temp);
 	}
 	else {
-		cout << "Nie masz tyle\n";
-	}*/
+		Console::putTextLine(L"Obsługa Naziemna >> Przykro nam, nie jesteśmy zainteresowani.");
+	}
 }
 
 void Planet::negativeAns() {
@@ -117,7 +112,7 @@ void Planet::negativeAns() {
 }
 
 void Planet::positiveAns(int i, Ship& statek) {
-	if (i <= statek.GetStuff()) {
+	if (i <= statek.GetStuff() && interactive == true) {
 		Console::putTextLine(L"Obsługa Naziemna >> Bierzemy\n");
 		statek.SetStuff(statek.GetStuff() - i);
 		statek.setMoney(GetPrice()*i);
@@ -126,4 +121,12 @@ void Planet::positiveAns(int i, Ship& statek) {
 	else {
 		Console::putTextLine(L"Obsługa Naziemna >> Nie masz tyle\n");
 	}
+}
+
+void Planet::byeBye(Ship& s) {
+	Console::putTextLine(L"Obsluga Naziemna >> Żegnamy, mamy nadzieję że pobyt się udał i zapraszamy  ponownie.");
+	Planet::visited = true;
+	Planet::interactive = false;
+	s.isStuck = true;
+
 }
