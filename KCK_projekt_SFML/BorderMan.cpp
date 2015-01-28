@@ -22,26 +22,28 @@ BorderMan::BorderMan() {
 BorderMan::~BorderMan(){}
 
 void BorderMan::action(Ship& statek, Planet& p) {
-	wstring text, text2;
-	text = to_wstring(Human::GetPrice());
-	p.SetBoolFalse();
-	text2 = L"Zaplac " + text + L" albo spadaj!";
-	Console::putTextLine(text2);
-	BorderMan::busy = true;
-	//cout << "Zaplac " << Human::GetPrice() << " albo spadaj!\n";
-	/*int  temp;
-	cin >> temp;
-	if ((temp == 1) && (Human::GetPrice() < statek.getMoney())) {
-	cout << "Dobra, wlatuj\nWitamy na plnecie\n";
-	statek.setMoney(statek.getMoney() - Human::GetPrice());
-	statek.isStuck = false;
-	}
-	else {
-	cout << "Spadaj, nie chcê Ciê tu wiêcej widzieæ\n"; //Smuteg
-	p.SetBoolFalse();
-	statek.isStuck = false;
-	}
-	}*/
+	//if (p.visited == false) {
+		wstring text, text2;
+		text = to_wstring(Human::GetPrice());
+		p.SetBoolFalse();
+		text2 = L"Skorumpowana Obsługa Graniczna >> Zaplac " + text + L" albo spadaj!";
+		Console::putTextLine(text2);
+		BorderMan::busy = true;
+		//cout << "Zaplac " << Human::GetPrice() << " albo spadaj!\n";
+		/*int  temp;
+		cin >> temp;
+		if ((temp == 1) && (Human::GetPrice() < statek.getMoney())) {
+		cout << "Dobra, wlatuj\nWitamy na plnecie\n";
+		statek.setMoney(statek.getMoney() - Human::GetPrice());
+		statek.isStuck = false;
+		}
+		else {
+		cout << "Spadaj, nie chcê Ciê tu wiêcej widzieæ\n"; //Smuteg
+		p.SetBoolFalse();
+		statek.isStuck = false;
+		}
+		}*/
+	//}
 }
 
 void BorderMan::negativeAns(Planet& p) {

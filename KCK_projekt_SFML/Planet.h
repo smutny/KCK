@@ -29,12 +29,16 @@ public:
 	void negativeAns();
 	bool visited;
 
+	void byeBye(Ship& s);
+
 private:
 	int pprice;
 
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
 	bool interactive;
+
+	
 
 	
 	 sf::Texture planetTexture;

@@ -11,6 +11,7 @@
 #include "Pirate.h"
 #include "Help.h"
 #include "BorderMan.h"
+#include "MotherPlanet.h"
 
 void wykonaj_komende();
 Ship s; Pirate p1; BorderMan b;
@@ -144,4 +145,11 @@ void wykonaj_komende()
 
 
 	Help::flaga = false;
+}
+
+void MotherPlanet::odblokowanie() {
+	for (auto planet : planets) {
+		planet.second->SetBoolTrue();
+		planet.second->visited = false;
+	}
 }
