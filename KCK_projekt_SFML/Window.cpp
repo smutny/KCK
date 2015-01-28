@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Window.h"
+#include "Console.h"
 
-sf::RenderWindow Window::mainScreen(sf::VideoMode(1024, 640), "KCK!");
+sf::RenderWindow Window::mainScreen(sf::VideoMode(1300, 640), "KCK!");
 
 Window::Window()
 {
@@ -71,5 +72,25 @@ void Window::halp()
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		cout << sf::Mouse::getPosition(mainScreen).x << " " << sf::Mouse::getPosition(mainScreen).y << "\n";
+	}
+}
+
+
+void Window::ShowPlanetName(map<wstring, Planet*> p)
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		for (auto planet : p)
+		{
+			int x = planet.second->getX();
+			int y = planet.second->getY();
+
+			if (sf::Mouse::getPosition(mainScreen).x >= x && sf::Mouse::getPosition(mainScreen).x <= x + 70
+				&& sf::Mouse::getPosition(mainScreen).y >= y && sf::Mouse::getPosition(mainScreen).y <= y + 70)
+			{
+				wstring planetName = planet.first;
+				Console::putTextLine(Console::getBanachPrefix() + L"To jest " + planetName + L", Kapitanie");
+			}
+		}
 	}
 }

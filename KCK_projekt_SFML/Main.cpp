@@ -30,7 +30,8 @@ int main(int argv, char* argc[])
 
 	sf::Clock clock;
 	
-	Parameter money(15, 550, 600, "arial.ttf", L"Pieniądze: ");
+	Parameter money(15, 550, 580, "arial.ttf", L"Pieniądze: ");
+	Parameter stuff(15, 550, 600, "arial.ttf", L"Towar: ");
 
 
 	 planets[L"Merkury"] = new Planet(140, 140, 1);
@@ -73,6 +74,7 @@ int main(int argv, char* argc[])
 		{
 			Window::close(event);
 			Window::halp();
+			Window::ShowPlanetName(planets);
 			Console::doYourJob(event);
 		}
 
@@ -82,6 +84,7 @@ int main(int argv, char* argc[])
 
 		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
+		stuff.display(s.GetStuff());
 
 		for (const auto& planet : planets)
 		{

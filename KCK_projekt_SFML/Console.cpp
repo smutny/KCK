@@ -32,6 +32,16 @@ Console::Console()
 	str[0] = captainPrefix;
 }
 
+wstring Console::getCaptainPrefix()
+{
+	return captainPrefix;
+}
+
+wstring Console::getBanachPrefix()
+{
+	return banachPrefix;
+}
+
 void Console::doYourJob(sf::Event event)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -77,6 +87,12 @@ void Console::doYourJob(sf::Event event)
 		if (static_cast<wchar_t>(event.text.unicode) != L'\r' && static_cast<wchar_t>(event.text.unicode) != L'\b')
 		{
 			str[currentLineNumber] += static_cast<wchar_t>(event.text.unicode);
+
+			sf::FloatRect lineBounds(text[currentLineNumber].getLocalBounds());
+			if (lineBounds.width >= 725)
+			{
+				putTextLine(getBanachPrefix() + L"Podana linia jest za d³uga. Proszê pisaæ zwiêŸlej.");
+			}
 		}
 		else
 		{
