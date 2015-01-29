@@ -90,11 +90,6 @@ int main(int argv, char* argc[])
 		{
 			planet.second->display();
 		}
-
-
-		string name = "Merkury";
-		//s.fly(dt, L"lewo");
-		//s.flyTo(dt, *planets[name]);
 		
 		s.display();
 
@@ -107,9 +102,15 @@ int main(int argv, char* argc[])
 
 void wykonaj_komende()
 {
-	if (Help::komenda == L"sprzedaj" && shipOnPlanet && !busy)
+	if (Help::komenda == L"tak" && shipOnPlanet && !busy)
 	{
 		currentPlanet.second->shopingTime(s);
+		busy = true;
+	}
+	if (Help::komenda == L"sprzedaj" && !busy)
+	{
+		int temp = (int)_wtof(Help::argument.c_str());
+		currentPlanet.second->positiveAns(temp, s);
 		busy = true;
 	}
 	if (Help::komenda == L"leć")

@@ -28,7 +28,6 @@ std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 	{
 		if (letter != L' ')
 			temp.push_back(letter);
-
 		if (letter == L' ' || letter == source.back())
 		{
 			tokens.push_back(temp);
@@ -69,9 +68,9 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj"};
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak"};
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
-	vector<wstring> operatory = { L"leć", L"sprzedaj"};
+	vector<wstring> operatory = { L"leć"};
 	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" , L"Uran", L"Jowisz", L"Neptun", L"Matk", L"matk"};
 	vector<vector<wstring>*> wskazniki = { &latanie };
 
@@ -120,15 +119,38 @@ std::wstring Help::textAnalysis(std::wstring text)
 			komenda = L"płać";
 			flaga = true;
 			statek->isStuck = false;
-			//statek->setMoney(statek->getMoney() - 220);
-			
-			return L"Płacimy, Kapitanie!";
+			if (Pirate::busy == true || BorderMan::busy == true)
+			{
+				return L"Płacimy, Kapitanie!";
+			}
+			else
+			{
+				return L"Kapitanie, nie ma komu płacić!";
+			}
+		}
+		else if (ssearch(tokens.at(j), L"tak") != 1000)
+		{
+			komenda = L"tak";
+			flaga = true;
+			return L"Przekazujemy komendę do kontroli naziemnej";
 		}
 		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
 		{
-			komenda = L"sprzedaj";
-			flaga = true;
-			return L"Sprzedajemy!";
+			if (statek->isOnPlanet)
+			{
+				komenda = L"sprzedaj";
+				if (tokens.size() <= (j + 1))
+				{
+					return L"Musisz podać ilość jednostek towaru, którą chcesz sprzedać!";
+				}
+				else
+				{
+					argument = tokens.at(j + 1);
+					flaga = true;
+					return L"Sprzedajemy " + argument + L" jednostek towaru!";
+				}
+			}
+			else return L"Nie ma komu sprzedać!";
 		}
 		else
 		{

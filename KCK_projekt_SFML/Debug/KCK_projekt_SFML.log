@@ -1,9 +1,70 @@
-﻿Build started 2015-01-26 18:44:14.
-     1>Project "C:\Users\user\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         KCK_projekt_SFML.vcxproj -> C:\Users\user\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.exe
-     1>Done Building Project "C:\Users\user\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
+﻿Build started 2015-01-29 18:03:42.
+     1>Project "C:\Users\Kacper\Documents\GitHub\KCK\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BorderMan.cpp Console.cpp GameScreen.cpp Help.cpp Main.cpp MotherPlanet.cpp Parameter.cpp Pirate.cpp Planet.cpp Ship.cpp Window.cpp
+         Ship.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\ship.cpp(45): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\ship.cpp(46): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\ship.cpp(101): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\ship.cpp(126): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         Planet.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\planet.cpp(41): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\planet.cpp(49): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\planet.cpp(53): warning C4244: 'return' : conversion from 'const float' to 'int', possible loss of data
+         Help.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(46): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(51): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(85): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(88): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(106): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(109): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(142): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(163): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(166): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(176): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\help.cpp(178): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Compiling...
+         Window.cpp
+         Pirate.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\pirate.cpp(19): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\pirate.cpp(34): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+         Parameter.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\parameter.cpp(33): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         MotherPlanet.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\motherplanet.cpp(54): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+         Main.cpp
+         GameScreen.cpp
+         Console.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\console.cpp(146): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         BorderMan.cpp
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\borderman.cpp(14): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+         Generating Code...
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\window.cpp(34): warning C4715: 'Window::isOpen' : not all control paths return a value
+     1>c:\users\kacper\documents\github\kck\kck\kck_projekt_sfml\window.cpp(40): warning C4715: 'Window::pollEvent' : not all control paths return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kacper\Documents\GitHub\KCK\KCK\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kacper\Documents\GitHub\KCK\KCK\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kacper\Documents\GitHub\KCK\KCK\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\BorderMan.obj
+         Debug\Console.obj
+         Debug\Parameter.obj
+         Debug\Pirate.obj
+         Debug\Window.obj
+         Debug\GameScreen.obj
+         Debug\Help.obj
+         Debug\Human.obj
+         Debug\Main.obj
+         Debug\MotherPlanet.obj
+         Debug\Planet.obj
+         Debug\Ship.obj
+         Debug\stdafx.obj
+         KCK_projekt_SFML.vcxproj -> C:\Users\Kacper\Documents\GitHub\KCK\KCK\Debug\KCK_projekt_SFML.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild".
+         Touching "Debug\KCK_projekt_SFML.tlog\KCK_projekt_SFML.lastbuildstate".
+     1>Done Building Project "C:\Users\Kacper\Documents\GitHub\KCK\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.05
+Time Elapsed 00:00:14.79

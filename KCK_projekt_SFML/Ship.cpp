@@ -11,6 +11,7 @@ Ship::Ship()
 
 	money = 1000;
 	isStuck = false;
+	isOnPlanet = false;
 }
 
 
@@ -29,7 +30,7 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			vx += -10;
 	
 		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
-			vx += 500;
+			vx += 300;
 		
 		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false) 
 			vy += -10;

@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include "stdafx.h"
 #include "Planet.h"
 #include "MotherPlanet.h"
@@ -15,35 +15,35 @@ MotherPlanet::~MotherPlanet()
 }
 
 void MotherPlanet::powitanieDom() {
-	Console::putTextLine(L"Domowa Obsluga Naziemna >> Witaj w domu. Chcesz odkupiÊ trochÍ úwieøego towaru? A moøe tylko nas odwiedzasz?");
+	Console::putTextLine(L"Domowa Obsluga Naziemna >> Witaj w domu. Chcesz odkupi√¶ troch√™ ≈ìwie¬øego towaru? A mo¬øe tylko nas odwiedzasz?");
 	MotherPlanet::odblokowanie();
 	//Odblokowanie wszystkich planet przy wizycie
 }
 
 void MotherPlanet::kupowanie(Ship& s) {
-	if (s.GetStuff > 0) {
+	if (s.GetStuff() > 0) {
 		wstring temp2;
 		wstring temp = to_wstring(GetPrice());
 		wstring temp3 = to_wstring(ilosc);
-		temp2 = L"Domowa Obsluga Naziemna >> Moøemy Ci sprzedaÊ " + temp3 + L"towaru po " + temp + L".";
+		temp2 = L"Domowa Obsluga Naziemna >> Mo≈ºemy Ci sprzeda√¶ " + temp3 + L"towaru po " + temp + L".";
 
 		Console::putTextLine(temp2);
-		Console::putTextLine(L"Jestes chÍtny?");
+		Console::putTextLine(L"Jestes chƒôtny?");
 	}
 	else {
-		Console::putTextLine(L"Domowa Obsluga Naziemna >> Jeszcze nie sprzeda≥eú poprzedniego towaru, wrÛÊ jak siÍ go pozbÍdziesz.");
+		Console::putTextLine(L"Domowa Obsluga Naziemna >> Jeszcze nie sprzeda≈Çe≈õ poprzedniego towaru, wr√≥ƒá jak siƒô go pozbƒôdziesz.");
 	}
 }
 
 void MotherPlanet::negativeAns(Ship& s) {
-	Console::putTextLine(L"Domowa Obsluga Naziemna >> Nie to nie, øegnam.");
+	Console::putTextLine(L"Domowa Obsluga Naziemna >> Nie to nie, ¬øegnam.");
 	s.isStuck = false;
 }
 
 void MotherPlanet::positiveAns(Ship& s,int i) {
 	if (s.getMoney() >= i * GetPrice() && s.GetStuff() == 0) {
 		s.setMoney(s.getMoney() - i * GetPrice());
-		Console::putTextLine(L"Domowa Obsluga Naziemna >> Zakupi≥eú towar.");
+		Console::putTextLine(L"Domowa Obsluga Naziemna >> Zakupi¬≥e≈ì towar.");
 		s.isStuck = false;
 	}
 }
@@ -55,5 +55,5 @@ void MotherPlanet::generatorIlosci() {
 	uniform_int_distribution<unsigned> distribution(1, 100);
 
 	ilosc = distribution(generator);
-	//Nic nie zmieniam w iloúciach bo chyba ok jest :d
+	//Nic nie zmieniam w ilo≈ìciach bo chyba ok jest :d
 }

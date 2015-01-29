@@ -75,6 +75,7 @@ bool Planet::CanWeShop() {
 
 bool Planet::onPlanet(Ship& statek) {
 	if ((statek.getX() == getX()) && (statek.getY() == getY())) {
+		statek.isOnPlanet = true;
 		return true;
 	}
 	else {
