@@ -8,6 +8,8 @@ public:
 	static void doYourJob(sf::Event event);
 	static void display();
 	static void putTextLine(wstring line);
+	static wstring getCaptainPrefix();
+	static wstring getBanachPrefix();
 
 private:
 	static void setFont(const char* fontLocalisation);

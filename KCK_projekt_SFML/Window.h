@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Planet.h"
+
 class Window
 {
 public:
@@ -16,6 +19,7 @@ public:
 
 
 	static void halp();
+	static void ShowPlanetName(map<wstring, Planet*> p);
 
 	
 private:
