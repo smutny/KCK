@@ -14,7 +14,7 @@ void Planet::display()
 
 Planet::Planet()
 {
-	bool visited = false;
+	visited = false;
 }
 
 
@@ -37,6 +37,7 @@ void Planet::setPosition(float x, float y)
 Planet::Planet(float x, float y, float number)
 {
 	interactive = true;
+	visited = false;	//ważne
 	setTexture(number);
 	setPosition(x,y);
 }
@@ -81,16 +82,21 @@ bool Planet::onPlanet(Ship& statek) {
 	}
 }
 
-void Planet::welcome(Ship& statek, Planet& planeta, BorderMan& b) {
-	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
-		b.action(statek,planeta);
+void Planet::welcome(Ship& statek, BorderMan& b) {
+
+	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
+		b.action(statek,*this);
 	}
-	if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
-		Console::putTextLine(L"Obsługa Naziemna >> Witamy, chcesz nam coś sprzedać?");
-	}
-	if (planeta.visited)
-	{
-		Console::putTextLine(L"Obsługa Naziemna >> U nas już byłeś, leć dalej.");
+	else{
+		BorderMan::busy = false;
+
+		if ((interactive == true) && /*(statek.isStuck == true)*/(onPlanet(statek) == true)) {
+			Console::putTextLine(L"Obsługa Naziemna >> Witamy, chcesz nam coś sprzedać?");
+		}
+		if (visited)
+		{
+			Console::putTextLine(L"Obsługa Naziemna >> U nas już byłeś, leć dalej.");
+		}
 	}
 }
 
