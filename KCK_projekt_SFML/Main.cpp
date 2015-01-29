@@ -110,17 +110,6 @@ void wykonaj_komende()
 		currentPlanet.second->shopingTime(s);
 		busy = true;
 	}
-	if (Help::komenda == L"nie")
-	{
-		if (Pirate::busy)
-		{
-			p1.negativeAnswer(s);
-		}
-		if (BorderMan::busy)
-		{
-			b.negativeAns(*currentPlanet.second);
-		}
-	}
 	if (Help::komenda == L"sprzedaj" && !busy2)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
@@ -150,13 +139,19 @@ void wykonaj_komende()
 		}
 		if (BorderMan::busy)
 		{
-			for (const auto& a : planets)
-			{
-				if (a.second->onPlanet(s))
-				{
-					b.positiveAns(*a.second,s);
-				}
-			}
+			cout << "borderman";
+			b.positiveAns(*currentPlanet.second,s);
+		}
+	}
+	if (Help::komenda == L"nie")
+	{
+		if (Pirate::busy)
+		{
+			p1.negativeAnswer(s);
+		}
+		if (BorderMan::busy)
+		{
+			b.negativeAns(*currentPlanet.second);
 		}
 	}
 

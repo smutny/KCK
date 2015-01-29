@@ -57,10 +57,10 @@ void BorderMan::positiveAns(Planet& p, Ship& s) {
 	if (p.CanWeShop() == true && GetPrice() <= s.getMoney()) {
 		s.setMoney(s.getMoney() - GetPrice());
 		Console::putTextLine(L"Przekupiona Obsługa Graniczna >> Ooo tak, moja kochane pinionżki :3");
-		BorderMan::busy = false;
 		//p.SetBoolTrue();
 		//p.visited = true;
 		p.welcome(s, *this);
+		BorderMan::busy = false;
 	}
 	else {
 		negativeAns(p);

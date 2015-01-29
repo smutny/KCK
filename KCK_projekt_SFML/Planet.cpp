@@ -86,7 +86,7 @@ bool Planet::onPlanet(Ship& statek) {
 
 void Planet::welcome(Ship& statek, BorderMan& b) {
 
-	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
+	if (/*(b.chance <= 50) && *//*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
 		b.action(statek,*this);
 	}
 	else{
