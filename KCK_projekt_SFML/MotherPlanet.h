@@ -2,7 +2,7 @@
 class MotherPlanet : public Planet
 {
 public:
-	MotherPlanet();
+	MotherPlanet(float x, float y, float numer);
 	~MotherPlanet();
 
 	int ilosc;

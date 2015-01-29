@@ -31,11 +31,6 @@
 #include <memory>
 
 
-//windows
-#include <Windows.h>
-#include <stringapiset.h>
-
-
 
 using namespace std;
 

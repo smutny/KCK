@@ -71,7 +71,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak"};
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
 	vector<wstring> operatory = { L"leć"};
-	vector<wstring> latanie = { L"prawo", L"lewo", L"góra", L"dół", L"Merkury" , L"Uran", L"Jowisz", L"Neptun", L"Matk", L"matk"};
+	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"góra", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
 	vector<vector<wstring>*> wskazniki = { &latanie };
 
 	
