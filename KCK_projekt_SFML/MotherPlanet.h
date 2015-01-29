@@ -6,12 +6,18 @@ public:
 	~MotherPlanet();
 
 	int ilosc;
+	//bool kupowanie = false;
 	
 	void powitanieDom();
 
-	void kupowanie();
+	void kupowanie(Ship& s);
+
+	void positiveAns(Ship& s,int i);
+	void negativeAns(Ship& s);
 
 	void odblokowanie();
+
+	void generatorIlosci();
 };
 
 /*

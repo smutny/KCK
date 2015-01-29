@@ -127,6 +127,6 @@ void Planet::byeBye(Ship& s) {
 	Console::putTextLine(L"Obsluga Naziemna >> Żegnamy, mamy nadzieję że pobyt się udał i zapraszamy  ponownie.");
 	Planet::visited = true;
 	Planet::interactive = false;
-	s.isStuck = true;
+	s.isStuck = false;
 
 }
