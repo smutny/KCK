@@ -23,7 +23,7 @@ public:
 
 	bool onPlanet(Ship& statek);
 	
-	void welcome(Ship& statek, Planet& planeta, BorderMan& b);
+	void welcome(Ship& statek, BorderMan& b);
 	void shopingTime(Ship& statek);
 	void positiveAns(int i, Ship& statek);
 	void negativeAns();

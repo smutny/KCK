@@ -58,7 +58,7 @@ int main(int argv, char* argc[])
 			{
 				if (planet.second->onPlanet(s))
 				{
-					planet.second->welcome(s, *planet.second, b);
+					planet.second->welcome(s, b);
 					currentPlanet = planet;
 					shipOnPlanet = true;
 				}
