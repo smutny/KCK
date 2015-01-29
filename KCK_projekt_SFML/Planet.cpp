@@ -40,6 +40,7 @@ Planet::Planet(float x, float y, float number)
 	visited = false;	//ważne
 	setTexture(number);
 	setPosition(x,y);
+	SetPrice(10);
 }
 
 
@@ -104,7 +105,7 @@ void Planet::welcome(Ship& statek, BorderMan& b) {
 void Planet::shopingTime(Ship& statek) {
 	if (interactive == true) {
 		wstring temp, temp2;
-		temp2 = L"700";// to_wstring(GetPrice());
+		temp2 = to_wstring(GetPrice());
 		temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
 		Console::putTextLine(temp);
 	}
@@ -122,10 +123,12 @@ void Planet::positiveAns(int i, Ship& statek) {
 	if (i <= statek.GetStuff() && interactive == true) {
 		Console::putTextLine(L"Obsługa Naziemna >> Bierzemy\n");
 		statek.SetStuff(statek.GetStuff() - i);
-		statek.setMoney(GetPrice()*i);
+		statek.setMoney(statek.getMoney()+GetPrice()*i);
 		visited = true;
+		byeBye(statek);
+		//interactive = false;
 	}
-	else {
+	else{
 		Console::putTextLine(L"Obsługa Naziemna >> Nie masz tyle\n");
 	}
 }

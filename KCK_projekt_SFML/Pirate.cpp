@@ -69,6 +69,7 @@ void Pirate::negativeAnswer(Ship& statek) {
 	Console::putTextLine(L"Piraci >> Nie pokazuj sie tu wiecej, frajerze!");
 	statek.SetStuff(0);
 	statek.isStuck = false;
+	Pirate::busy = false;
 }
 
 void Pirate::positiveAnswer(Ship& statek) {

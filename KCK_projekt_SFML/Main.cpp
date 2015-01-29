@@ -20,6 +20,7 @@ float dt;
 pair<wstring, Planet*> currentPlanet;
 bool shipOnPlanet = false;
 bool busy = true;
+bool busy2 = true;
 
 int main(int argv, char* argc[])
 {
@@ -69,6 +70,7 @@ int main(int argv, char* argc[])
 		{
 			shipOnPlanet = false;
 			busy = false;
+			busy2 = false;
 		}
 		sf::Event event;
 		while (Window::pollEvent(event))
@@ -108,16 +110,28 @@ void wykonaj_komende()
 		currentPlanet.second->shopingTime(s);
 		busy = true;
 	}
-	if (Help::komenda == L"sprzedaj" && !busy)
+	if (Help::komenda == L"nie")
+	{
+		if (Pirate::busy)
+		{
+			p1.negativeAnswer(s);
+		}
+		if (BorderMan::busy)
+		{
+			b.negativeAns(*currentPlanet.second);
+		}
+	}
+	if (Help::komenda == L"sprzedaj" && !busy2)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
+		cout << temp;
 		currentPlanet.second->positiveAns(temp, s);
-		busy = true;
+		busy2 = true;
 	}
 	if (Help::komenda == L"leć")
 	{
 		
-		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
+		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"gór" || Help::argument == L"dół")
 		{	
 			
 			s.fly(dt, Help::argument);
@@ -132,7 +146,6 @@ void wykonaj_komende()
 	{
 		if (Pirate::busy)
 		{
-			cout << "pirat";
 			p1.positiveAnswer(s);
 		}
 		if (BorderMan::busy)
@@ -141,7 +154,6 @@ void wykonaj_komende()
 			{
 				if (a.second->onPlanet(s))
 				{
-					cout << "granicznik";
 					b.positiveAns(*a.second,s);
 				}
 			}

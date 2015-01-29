@@ -68,10 +68,10 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak"};
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak", L"nie"};
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
 	vector<wstring> operatory = { L"leć"};
-	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"góra", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
+	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"gór", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
 	vector<vector<wstring>*> wskazniki = { &latanie };
 
 	
@@ -133,6 +133,12 @@ std::wstring Help::textAnalysis(std::wstring text)
 			komenda = L"tak";
 			flaga = true;
 			return L"Przekazujemy komendę do kontroli naziemnej";
+		}
+		else if (ssearch(tokens.at(j), L"nie") != 1000)
+		{
+			komenda = L"nie";
+			flaga = true;
+			return L"Przekazujemy komendę do rozmówcy";
 		}
 		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
 		{

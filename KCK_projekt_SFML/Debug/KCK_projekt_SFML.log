@@ -1,10 +1,13 @@
-﻿Build started 2015-01-29 20:24:16.
-     1>Project "C:\Users\Gracjan\Documents\GitHub\KCK-1\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
-         Main.cpp
+﻿Build started 2015-01-30 00:05:51.
+     1>Project "C:\Users\Kacper\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SFML\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BorderMan.cpp
+         BorderMan.cpp
+     1>c:\users\kacper\documents\github\kck\kck_projekt_sfml\borderman.cpp(14): warning C4244: 'argument' : conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\BorderMan.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kacper\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML\SFML-2.1\Libs\Debug" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kacper\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kacper\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.lib" /MACHINE:X86 Debug\BorderMan.obj
          Debug\Console.obj
          Debug\Parameter.obj
          Debug\Pirate.obj
@@ -17,9 +20,12 @@
          Debug\Planet.obj
          Debug\Ship.obj
          Debug\stdafx.obj
-         KCK_projekt_SFML.vcxproj -> C:\Users\Gracjan\Documents\GitHub\KCK-1\Debug\KCK_projekt_SFML.exe
-     1>Done Building Project "C:\Users\Gracjan\Documents\GitHub\KCK-1\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
+         KCK_projekt_SFML.vcxproj -> C:\Users\Kacper\Documents\GitHub\KCK\Debug\KCK_projekt_SFML.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\KCK_projekt_SFML.tlog\unsuccessfulbuild".
+         Touching "Debug\KCK_projekt_SFML.tlog\KCK_projekt_SFML.lastbuildstate".
+     1>Done Building Project "C:\Users\Kacper\Documents\GitHub\KCK\KCK_projekt_SFML\KCK_projekt_SFML.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.78
+Time Elapsed 00:00:01.15

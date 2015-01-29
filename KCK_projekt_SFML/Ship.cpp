@@ -9,6 +9,7 @@ Ship::Ship()
 	setTexture();
 	setPosition();
 
+	stuff = 1000;
 	money = 1000;
 	isStuck = false;
 	isOnPlanet = false;
@@ -32,7 +33,7 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
 			vx += 300;
 		
-		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false) 
+		if (rozkaz == L"gór" && isStuck == false && isStuckv2 == false) 
 			vy += -10;
 		
 		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false) 
@@ -72,7 +73,7 @@ void Ship::flyTo(float& dt, Planet& p)
 		}
 		else if (getY() > p.getY())
 		{
-			fly(dt, L"góra", 7000);
+			fly(dt, L"gór", 7000);
 			focus(p);
 		}
 		else if (getY() < p.getY())

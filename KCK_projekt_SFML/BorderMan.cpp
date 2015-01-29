@@ -48,7 +48,7 @@ void BorderMan::action(Ship& statek, Planet& p) {
 
 void BorderMan::negativeAns(Planet& p) {
 	p.SetBoolFalse();
-	Console::putTextLine(L"Skorumpowana Obsługa Graniczna >> Pff, tylko tyle? Nie pokazuj się tu więcej.");
+	Console::putTextLine(L"Skorumpowana Obsługa Graniczna >>Nie pokazuj się tu więcej.");
 	BorderMan::busy = false;
 	p.visited = true;
 }
@@ -57,7 +57,7 @@ void BorderMan::positiveAns(Planet& p, Ship& s) {
 	if (p.CanWeShop() == true && GetPrice() <= s.getMoney()) {
 		s.setMoney(s.getMoney() - GetPrice());
 		Console::putTextLine(L"Przekupiona Obsługa Graniczna >> Ooo tak, moja kochane pinionżki :3");
-		BorderMan::busy = true;
+		BorderMan::busy = false;
 		//p.SetBoolTrue();
 		//p.visited = true;
 		p.welcome(s, *this);
