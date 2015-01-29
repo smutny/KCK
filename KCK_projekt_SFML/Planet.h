@@ -31,7 +31,7 @@ public:
 
 	void byeBye(Ship& s);
 
-private:
+protected:
 	int pprice;
 
 	void setTexture(unsigned numer);

@@ -38,6 +38,7 @@ int main(int argv, char* argc[])
 	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
 	 planets[L"Jowisz"] = new Planet(290, 140, 3);
 	 planets[L"Neptun"] = new Planet(420, 290, 4);
+	 planets[L"OrionV"] = new MotherPlanet(350, 350, 5);
 
 	 currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 

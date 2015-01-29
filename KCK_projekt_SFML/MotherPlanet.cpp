@@ -4,9 +4,15 @@
 #include "MotherPlanet.h"
 #include "Console.h"
 
-MotherPlanet::MotherPlanet()
+MotherPlanet::MotherPlanet(float x, float y, float numer)
 {
 	SetPrice(50);
+
+	interactive = true;
+	visited = false;	//ważne
+	setTexture(numer);
+	setPosition(x, y);
+
 }
 
 
