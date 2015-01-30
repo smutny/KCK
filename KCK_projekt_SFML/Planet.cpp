@@ -116,14 +116,15 @@ void Planet::shopingTime(Ship& statek) {
 		temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
 		Console::putTextLine(temp);
 	}
-	else {
+	/*else {
 		Console::putTextLine(L"Obsługa Naziemna >> Przykro nam, nie jesteśmy zainteresowani.");
-	}
+	}*/
 }
 
-void Planet::negativeAns() {
+void Planet::negativeAns(Ship & statek) {
 	Console::putTextLine(L"Obsługa Naziemna >> Nie to nie, może następnym razem\n");
 	visited = true;
+	statek.isStuck = false;
 }
 
 void Planet::positiveAns(int i, Ship& statek) {
@@ -133,6 +134,7 @@ void Planet::positiveAns(int i, Ship& statek) {
 		statek.setMoney(statek.getMoney()+GetPrice()*i);
 		visited = true;
 		byeBye(statek);
+		statek.isStuck = false;
 		//interactive = false;
 	}
 	else{
@@ -145,5 +147,6 @@ void Planet::byeBye(Ship& s) {
 	Planet::visited = true;
 	Planet::interactive = false;
 	s.isStuck = false;
+	s.isStuckv2 = false;
 	s.stop();
 }

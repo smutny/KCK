@@ -51,16 +51,25 @@ void MotherPlanet::negativeAns(Ship& s) {
 
 void MotherPlanet::positiveAns(Ship& s,int i) {
 	if (s.getMoney() >= i * GetPrice() && s.GetStuff() == 0) {
-		s.setMoney(s.getMoney() - i * GetPrice());
-		s.SetStuff(s.GetStuff() + i);
-		ilosc = ilosc - i;
-		Console::putTextLine(L"Domowa Obsluga Naziemna >> Zakupiłeś towar.");
-		s.isStuck = false;
+		if (i == 0)
+		{
+			Console::putTextLine(L"Nie wiemy ile chcesz kupić!");
+			s.isStuck = false;
+		}
+		else
+		{
+			s.setMoney(s.getMoney() - i * GetPrice());
+			s.SetStuff(s.GetStuff() + i);
+			ilosc = ilosc - i;
+			Console::putTextLine(L"Domowa Obsluga Naziemna >> Zakupiłeś towar.");
+			s.isStuck = false;
+		}
 	}
 	else
 	{
 		Console::putTextLine(L"Domowa Obsługa Naziemna >> Nie stać Cię!");
 		Console::putTextLine(L"Domowa Obsługa Naziemna >> Spróbuj kupić mniejszą ilość!");
+		s.isStuck = false;
 	}
 }
 
