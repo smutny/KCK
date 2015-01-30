@@ -33,11 +33,11 @@ public:
 	int movementCounter = 0;
 	bool isOnPlanet;
 	// movmentCounter jako public poniewaz funkcja wydajaca rozkaz np."prawo" bedzie musiala go zerowac
-private:
-	void setTexture();
-	
 
-	
+	void setTexture();
+	void setTexture2();
+
+private:
 	int vx, vy;
 	int x, y;
 

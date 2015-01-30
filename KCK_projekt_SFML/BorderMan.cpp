@@ -4,17 +4,14 @@
 #include "Planet.h"
 #include "Human.h"
 #include "Console.h"
+#include "Generator.h"
 
 unsigned int BorderMan::chance;
 bool BorderMan::busy = false;
 
 BorderMan::BorderMan() {
-	auto seed = std::chrono::system_clock::now().time_since_epoch().count();
-
-	default_random_engine generator(seed);
-	uniform_int_distribution<unsigned> distribution(1, 100);
-
-	chance = distribution(generator);
+	
+	chance = Generator::generate();
 
 	SetPrice(100);
 }

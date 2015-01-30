@@ -3,6 +3,7 @@
 #include "Planet.h"
 #include "MotherPlanet.h"
 #include "Console.h"
+#include "Generator.h"
 
 MotherPlanet::MotherPlanet(float x, float y, float numer)
 {
@@ -55,11 +56,7 @@ void MotherPlanet::positiveAns(Ship& s,int i) {
 }
 
 void MotherPlanet::generatorIlosci() {
-	auto seed = std::chrono::system_clock::now().time_since_epoch().count();
-
-	default_random_engine generator(seed);
-	uniform_int_distribution<unsigned> distribution(1, 100);
-
-	ilosc = distribution(generator);
+	
+	ilosc = Generator::generate(1,1000);
 	//Nic nie zmieniam w iloœciach bo chyba ok jest :d
 }

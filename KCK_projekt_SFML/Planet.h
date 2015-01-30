@@ -21,7 +21,9 @@ public:
 	void SetBoolFalse();
 	bool CanWeShop();
 
-	bool onPlanet(Ship& statek);
+	bool isMotherPlanet;
+
+	virtual bool onPlanet(Ship& statek);
 
 	void welcome(Ship& statek, BorderMan& b);
 	void shopingTime(Ship& statek);

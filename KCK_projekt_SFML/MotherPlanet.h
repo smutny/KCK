@@ -5,9 +5,12 @@ public:
 	MotherPlanet(float x, float y, float numer);
 	~MotherPlanet();
 
+
+	bool onPlanet(Ship& statek){ return false; };
+
 	int ilosc;
 	//bool kupowanie = false;
-	bool isMotherPlanet;
+	
 	void powitanieDom();
 
 	void kupowanie(Ship& s);

@@ -22,6 +22,22 @@ Ship::~Ship()
 
 
 
+void Ship::setTexture2()
+{
+	if (GetStuff() >= 500)
+	{
+		statekTekstura.loadFromFile("spaceShipFull.png");
+		statek.setTexture(statekTekstura);
+	}
+	else if (GetStuff() <= 500 && GetStuff() >= 100)
+	{
+		statekTekstura.loadFromFile("spaceShipHalf.png");
+		statek.setTexture(statekTekstura);
+	}
+
+}
+
+
 void Ship::stop()
 {
 	movementCounter = 0;
@@ -29,23 +45,27 @@ void Ship::stop()
 
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
-	
-	//int mnoznik = 100;
-	movementCounter++;
+	if (movementCounter == counterLimit)
+	{
+		movementCounter = 0;
+		isStuckv2 = true;
+	}
+	else{
+		movementCounter++;
 
 		vx = vy = 0;
-		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false) 
+		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false)
 			vx += -10;
-	
-		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
+
+		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false)
 			vx += 165;
-		
-		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false) 
+
+		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false)
 			vy += -10;
-		
-		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false) 
+
+		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false)
 			vy += 165;
-		
+
 		if (movementCounter <= counterLimit)
 		{
 			comeBack();
@@ -53,15 +73,8 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			x += vx * dt;
 			y += vy * dt;
 		}
-		
-		if (movementCounter == counterLimit)
-		{
-			movementCounter = 0;
-			isStuckv2 = true;
-		}
 
-
-
+	}
 
 }
 
@@ -71,22 +84,18 @@ void Ship::flyTo(float& dt, Planet& p)
 		if (getX() < p.getX())
 		{
 			fly(dt, L"prawo", 7000);
-			//focus(p);
 		}
 		else if (getX() > p.getX())
 		{
 			fly(dt, L"lewo", 7000);
-			//focus(p);
 		}
 		else if (getY() > p.getY())
 		{
 			fly(dt, L"góra", 7000);
-			//focus(p);
 		}
 		else if (getY() < p.getY())
 		{
 			fly(dt, L"dół", 7000);
-			//focus(p);
 		}
 	
 }

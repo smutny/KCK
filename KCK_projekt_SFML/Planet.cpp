@@ -79,9 +79,9 @@ bool Planet::onPlanet(Ship& statek) {
 		statek.getX() <= getX() + 10 &&
 		statek.getY() >= getY() &&
 		statek.getY() <= getY() + 10
-
-		) {
-		statek.isStuck = true;
+		
+		){
+		
 		statek.isOnPlanet = true;
 		return true;
 	}
@@ -124,11 +124,13 @@ void Planet::shopingTime(Ship& statek) {
 }
 
 void Planet::negativeAns() {
+	
 	Console::putTextLine(L"Obsługa Naziemna >> Nie to nie, może następnym razem\n");
 	visited = true;
 }
 
 void Planet::positiveAns(int i, Ship& statek) {
+	statek.movementCounter = 0;
 	if (i <= statek.GetStuff() && interactive == true) {
 		Console::putTextLine(L"Obsługa Naziemna >> Bierzemy\n");
 		statek.SetStuff(statek.GetStuff() - i);
@@ -141,6 +143,7 @@ void Planet::positiveAns(int i, Ship& statek) {
 }
 
 void Planet::byeBye(Ship& s) {
+	s.movementCounter = 0;
 	Console::putTextLine(L"Obsluga Naziemna >> Żegnamy, mamy nadzieję że pobyt się udał i zapraszamy  ponownie.");
 	Planet::visited = true;
 	Planet::interactive = false;

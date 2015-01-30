@@ -19,21 +19,15 @@ Help::~Help()
 {
 }
 
+
+
 std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 {
+	std::wistringstream iss(source);
 	std::vector<std::wstring> tokens;
-	std::wstring temp;
-
-	for (const auto& letter : source)
-	{
-		if (letter != L' ')
-			temp.push_back(letter);
-		if (letter == L' ' || letter == source.back())
-		{
-			tokens.push_back(temp);
-			temp.clear();
-		}
-	}
+	std::move(std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(iss),
+		std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(),
+		std::back_inserter(tokens));
 
 	return tokens;
 }
@@ -76,8 +70,6 @@ std::wstring Help::textAnalysis(std::wstring text)
 
 	
 	vector<wstring> tokens = tokenize(text);
-
-	//analiza
 
 	//ugrzeczniacz
 	int j = 0;
@@ -149,7 +141,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
 		{
-			if (statek->isOnPlanet && planety[L"OrionV"]->interactive != false )
+			if (statek->isOnPlanet)
 			{
 				komenda = L"sprzedaj";
 				if (tokens.size() <= (j + 1))

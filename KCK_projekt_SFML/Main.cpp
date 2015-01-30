@@ -34,11 +34,11 @@ int main(int argv, char* argc[])
 	Parameter stuff(15, 550, 600, "arial.ttf", L"Towar: ");
 
 
-	 planets[L"Merkury"] = new Planet(140, 140, 1);
-	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
-	 planets[L"Jowisz"] = new Planet(290, 140, 3);
-	 planets[L"Neptun"] = new Planet(420, 290, 4);
-	 planets[L"OrionV"] = new MotherPlanet(350, 350, 5);
+	 planets[L"Merkury"] = new Planet(115, 180, 1);
+	 planets[L"Uran"] = new Planet(50, 450, 2); //70,440,2 //550,550,2
+	 planets[L"Jowisz"] = new Planet(320, 110, 3);
+	 planets[L"Neptun"] = new Planet(394, 320, 4);
+	 planets[L"OrionV"] = new MotherPlanet(252, 244, 5);
 
 	 currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 
@@ -48,6 +48,8 @@ int main(int argv, char* argc[])
 		
 		//auto dt = clock.restart().asSeconds();
 		Help::podaj_statek(&s, &dt, planets);
+
+
 
 		//if (Help::flaga)
 		//{
@@ -83,17 +85,28 @@ int main(int argv, char* argc[])
 	GameScreen::display();
 	Console::display();
 
+	if (s.GetStuff() >= 500)
+	{
+		s.setTexture();
+	}
+	else if (s.GetStuff() < 500)
+	{
+		s.setTexture();
+	}
+
+
 		p1.attack(s.getX(), s.getY(), s);
 		money.display(s.getMoney());
 		stuff.display(s.GetStuff());
+		s.setTexture2();
 
 		for (const auto& planet : planets)
 		{
 			planet.second->display();
 		}
-		
+			
 		s.display();
-
+		
 		Window::display();	
 
 	}
@@ -121,14 +134,13 @@ void wykonaj_komende()
 		
 		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
 		{	
-			//std::cout << s.movementCounter<<std::endl;
+			if (s.isStuckv2 == false )
 			s.fly(dt, Help::argument);
 
 		}
 		else
 		{
 			s.flyTo(dt, *planets[Help::argument]);
-			//std::cout << s.movementCounter << std::endl;
 		}
 	}
 	if (Help::komenda == L"płać")
