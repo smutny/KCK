@@ -18,7 +18,9 @@ Ship s; Pirate p1; BorderMan b;
 map<wstring, Planet*> planets;
 float dt;
 pair<wstring, Planet*> currentPlanet;
+pair<wstring, Planet*> mother;
 bool shipOnPlanet = false;
+bool shipOnMother = false;
 bool busy = true;
 bool busy2 = true;
 
@@ -36,75 +38,99 @@ int main(int argv, char* argc[])
 
 
 	 planets[L"Merkury"] = new Planet(140, 140, 1);
-	 planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
-	 planets[L"Jowisz"] = new Planet(290, 140, 3);
-	 planets[L"Neptun"] = new Planet(420, 290, 4);
-	 planets[L"OrionV"] = new MotherPlanet(350, 350, 5);
+planets[L"Uran"] = new Planet(70, 440, 2); //70,440,2 //550,550,2
+planets[L"Jowisz"] = new Planet(290, 140, 3);
+planets[L"Neptun"] = new Planet(420, 290, 4);
+planets[L"OrionV"] = new MotherPlanet(350, 350, 5);
 
-	 currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
 
-	 dt = clock.restart().asSeconds();
-	while (Window::isOpen())
-	{
-		
-		//auto dt = clock.restart().asSeconds();
-		Help::podaj_statek(&s, &dt, planets);
 
-		//if (Help::flaga)
-		//{
-			wykonaj_komende();
+currentPlanet = make_pair(L"Merkury", planets[L"Merkury"]);
+
+dt = clock.restart().asSeconds();
+while (Window::isOpen())
+{
+
+	//auto dt = clock.restart().asSeconds();
+	Help::podaj_statek(&s, &dt, planets);
+
+	//if (Help::flaga)
+	//{
+	wykonaj_komende();
 	//	}
-		if (!shipOnPlanet)
+	if (!shipOnPlanet && !shipOnMother)
+	{
+		for (auto planet : planets)
 		{
-			for (auto planet : planets)
+			if (planet.second->onPlanet(s) && planet.first != L"OrionV")
 			{
-				if (planet.second->onPlanet(s) && planet.first != L"OrionV")
-				{
-					planet.second->welcome(s, b);
-					currentPlanet = planet;
-					shipOnPlanet = true;
-				}
+				planet.second->welcome(s, b);
+				currentPlanet = planet;
+				shipOnPlanet = true;
+			}
+			if (planet.second->onPlanet(s) && planet.first == L"OrionV")
+			{
+				mother = planet;
+				MotherPlanet* temp = (MotherPlanet*)planet.second;
+				temp->powitanieDom();
+				currentPlanet = planet;
+				shipOnMother = true;
 			}
 		}
-		if (currentPlanet.second->onPlanet(s) == false)
-		{
-			shipOnPlanet = false;
-			busy = false;
-			busy2 = false;
-		}
-		sf::Event event;
-		while (Window::pollEvent(event))
-		{
-			Window::close(event);
-			Window::halp();
-			Window::ShowPlanetName(planets);
-			Console::doYourJob(event);
-		}
+	}
+	if (currentPlanet.second->onPlanet(s) == false)
+	{
+		shipOnPlanet = false;
+		busy = false;
+		busy2 = false;
+		shipOnMother = false;
+	}
+
+	sf::Event event;
+	while (Window::pollEvent(event))
+	{
+		Window::close(event);
+		Window::halp();
+		Window::ShowPlanetName(planets);
+		Console::doYourJob(event);
+	}
 
 	Window::clear();
 	GameScreen::display();
 	Console::display();
 
-		p1.attack(s.getX(), s.getY(), s);
-		money.display(s.getMoney());
-		stuff.display(s.GetStuff());
+	p1.attack(s.getX(), s.getY(), s);
+	money.display(s.getMoney());
+	stuff.display(s.GetStuff());
 
-		for (const auto& planet : planets)
-		{
-			planet.second->display();
-		}
-		
-		s.display();
-
-		Window::display();	
-
+	for (const auto& planet : planets)
+	{
+		planet.second->display();
 	}
-	return 0;
+
+	s.display();
+
+	Window::display();
+
+}
+return 0;
 }
 
 
 void wykonaj_komende()
 {
+	if (Help::komenda == L"tak" && shipOnMother && !busy)
+	{
+		MotherPlanet* temp = (MotherPlanet*)mother.second;
+		temp->kupowanie(s);
+		busy = true;
+	}
+	if (Help::komenda == L"nie" && shipOnMother && !busy)
+	{
+		MotherPlanet* temp = (MotherPlanet*)mother.second;
+		temp->negativeAns(s);
+		busy = true;
+	}
 	if (Help::komenda == L"tak" && shipOnPlanet && !busy)
 	{
 		currentPlanet.second->shopingTime(s);
@@ -113,9 +139,15 @@ void wykonaj_komende()
 	if (Help::komenda == L"sprzedaj" && !busy2)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
-		cout << temp;
 		currentPlanet.second->positiveAns(temp, s);
 		busy2 = true;
+	}
+	if (Help::komenda == L"kup")
+	{
+		int temp = (int)_wtof(Help::argument.c_str());
+		MotherPlanet* temptemp = (MotherPlanet*)currentPlanet.second;
+		temptemp->positiveAns(s, temp);
+		Help:: komenda = L"tak";
 	}
 	if (Help::komenda == L"leć")
 	{

@@ -21,20 +21,11 @@ Help::~Help()
 
 std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 {
+	std::wistringstream iss(source);
 	std::vector<std::wstring> tokens;
-	std::wstring temp;
-
-	for (const auto& letter : source)
-	{
-		if (letter != L' ')
-			temp.push_back(letter);
-		if (letter == L' ' || letter == source.back())
-		{
-			tokens.push_back(temp);
-			temp.clear();
-		}
-	}
-
+	std::move(std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(iss),
+		std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(),
+		std::back_inserter(tokens));
 	return tokens;
 }
 
@@ -68,7 +59,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak", L"nie", L"stop"};
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać", L"sprzedaj", L"tak", L"nie", L"stop", L"kup" };
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
 	vector<wstring> operatory = { L"leć" };
 	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"gór", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
@@ -149,6 +140,31 @@ std::wstring Help::textAnalysis(std::wstring text)
 			komenda = L"nie";
 			flaga = true;
 			return L"Przekazujemy komendę do rozmówcy";
+		}
+		else if (ssearch(tokens.at(j), L"kup") != 1000)
+		{
+			if (statek->isOnPlanet)
+			{
+				komenda = L"kup";
+				if (tokens.size() <= (j + 1))
+				{
+					return L"Musisz podać ilość jednostek towaru, którą chcesz kupić!";
+				}
+				else
+				{
+					if (tokens.at(j + 1) == L"towar")
+					{
+						argument = L"100";
+					}
+					else
+					{
+						argument = tokens.at(j + 1);
+					}
+					flaga = true;
+					return L"Kupujemy " + argument + L" jednostek towaru!";
+				}
+			}
+			else return L"Nie ma komu sprzedać!";
 		}
 		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
 		{

@@ -30,6 +30,7 @@ public:
 	bool visited;
 	bool interactive;
 	void byeBye(Ship& s);
+	bool isMotherPlanet;
 
 protected:
 	int pprice;

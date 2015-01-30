@@ -41,6 +41,7 @@ Planet::Planet(float x, float y, float number)
 	setTexture(number);
 	setPosition(x,y);
 	SetPrice(10);
+	isMotherPlanet = false;
 }
 
 
@@ -81,7 +82,7 @@ bool Planet::onPlanet(Ship& statek) {
 		statek.getY() <= getY() + 10
 		
 		) {
-		statek.isStuck = true;
+		//statek.isStuck = true;
 		statek.isOnPlanet = true;
 		return true;
 	}
@@ -144,5 +145,5 @@ void Planet::byeBye(Ship& s) {
 	Planet::visited = true;
 	Planet::interactive = false;
 	s.isStuck = false;
-
+	s.stop();
 }
