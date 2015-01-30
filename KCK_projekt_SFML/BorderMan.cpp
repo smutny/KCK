@@ -62,6 +62,14 @@ void BorderMan::positiveAns(Planet& p, Ship& s) {
 		p.welcome(s, *this);
 		BorderMan::busy = false;
 	}
+	else if (p.visited == true)
+	{
+		Console::putTextLine(L"Banach >> Nie masz wstepu na tę planetę!");
+		BorderMan::busy = false;
+		s.isStuck = false;
+		s.isStuckv2 = false;
+		s.movementCounter = 0;
+	}
 	else {
 		negativeAns(p);
 	}

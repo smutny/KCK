@@ -14,6 +14,7 @@
 #include "MotherPlanet.h"
 
 void wykonaj_komende();
+void zeruj();
 Ship s; Pirate p1; BorderMan b;
 map<wstring, Planet*> planets;
 float dt;
@@ -111,6 +112,11 @@ while (Window::isOpen())
 	s.display();
 
 	Window::display();
+	/*if (s.getMoney() == 0 && s.GetStuff() == 0)
+	{
+		Console::putTextLine(L"GAME OVER");
+		exit(0);
+	}*/
 
 }
 return 0;
@@ -136,11 +142,17 @@ void wykonaj_komende()
 		currentPlanet.second->shopingTime(s);
 		busy = true;
 	}
-	if (Help::komenda == L"sprzedaj" && !busy2)
+	if (Help::komenda == L"nie" && shipOnPlanet && !busy)
+	{
+		currentPlanet.second->negativeAns(s);
+		busy = true;
+	}
+	if (Help::komenda == L"sprzedaj" /*&& !busy2*/)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
 		currentPlanet.second->positiveAns(temp, s);
-		busy2 = true;
+		Help::komenda = L"tak";
+		//busy2 = true;
 	}
 	if (Help::komenda == L"kup")
 	{
@@ -154,7 +166,7 @@ void wykonaj_komende()
 		
 		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"gór" || Help::argument == L"dół")
 		{	
-			
+			if(s.isStuckv2 == false)
 			s.fly(dt, Help::argument);
 
 		}
@@ -179,11 +191,16 @@ void wykonaj_komende()
 		if (Pirate::busy)
 		{
 			p1.negativeAnswer(s);
+			s.isStuck = false;
 		}
-		if (BorderMan::busy)
+		if (BorderMan::busy  && shipOnPlanet)
 		{
 			b.negativeAns(*currentPlanet.second);
 		}
+	}
+	if (Help::komenda == L"zeruj")
+	{
+		zeruj();
 	}
 
 
@@ -195,4 +212,10 @@ void MotherPlanet::odblokowanie() {
 		planet.second->SetBoolTrue();
 		planet.second->visited = false;
 	}
+}
+
+void zeruj()
+{
+	s.setMoney(0);
+	s.SetStuff(0);
 }

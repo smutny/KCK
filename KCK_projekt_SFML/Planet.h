@@ -26,7 +26,7 @@ public:
 	void welcome(Ship& statek, BorderMan& b);
 	void shopingTime(Ship& statek);
 	void positiveAns(int i, Ship& statek);
-	void negativeAns();
+	void negativeAns(Ship& statek);
 	bool visited;
 	bool interactive;
 	void byeBye(Ship& s);
