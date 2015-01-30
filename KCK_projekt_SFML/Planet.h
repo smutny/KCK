@@ -28,15 +28,16 @@ public:
 	void positiveAns(int i, Ship& statek);
 	void negativeAns();
 	bool visited;
-
+	bool interactive;
 	void byeBye(Ship& s);
+	bool isMotherPlanet;
 
-private:
+protected:
 	int pprice;
 
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
-	bool interactive;
+
 
 	
 

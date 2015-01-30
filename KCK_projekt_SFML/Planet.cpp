@@ -40,6 +40,8 @@ Planet::Planet(float x, float y, float number)
 	visited = false;	//ważne
 	setTexture(number);
 	setPosition(x,y);
+	SetPrice(10);
+	isMotherPlanet = false;
 }
 
 
@@ -74,7 +76,14 @@ bool Planet::CanWeShop() {
 }
 
 bool Planet::onPlanet(Ship& statek) {
-	if ((statek.getX() == getX()) && (statek.getY() == getY())) {
+	if (statek.getX() >= getX() &&
+		statek.getX() <= getX() + 10 &&
+		statek.getY() >= getY() &&
+		statek.getY() <= getY() + 10
+		
+		) {
+		//statek.isStuck = true;
+		statek.isOnPlanet = true;
 		return true;
 	}
 	else {
@@ -84,7 +93,7 @@ bool Planet::onPlanet(Ship& statek) {
 
 void Planet::welcome(Ship& statek, BorderMan& b) {
 
-	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
+	if (/*(b.chance <= 50) && *//*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
 		b.action(statek,*this);
 	}
 	else{
@@ -103,7 +112,7 @@ void Planet::welcome(Ship& statek, BorderMan& b) {
 void Planet::shopingTime(Ship& statek) {
 	if (interactive == true) {
 		wstring temp, temp2;
-		temp2 = L"700";// to_wstring(GetPrice());
+		temp2 = to_wstring(GetPrice());
 		temp = L"Obsługa Naziemna >> Mozemy odkupic od Ciebie towar za " + temp2 + L".Chciałbyś sprzedać?";
 		Console::putTextLine(temp);
 	}
@@ -121,10 +130,12 @@ void Planet::positiveAns(int i, Ship& statek) {
 	if (i <= statek.GetStuff() && interactive == true) {
 		Console::putTextLine(L"Obsługa Naziemna >> Bierzemy\n");
 		statek.SetStuff(statek.GetStuff() - i);
-		statek.setMoney(GetPrice()*i);
+		statek.setMoney(statek.getMoney()+GetPrice()*i);
 		visited = true;
+		byeBye(statek);
+		//interactive = false;
 	}
-	else {
+	else{
 		Console::putTextLine(L"Obsługa Naziemna >> Nie masz tyle\n");
 	}
 }
@@ -133,6 +144,6 @@ void Planet::byeBye(Ship& s) {
 	Console::putTextLine(L"Obsluga Naziemna >> Żegnamy, mamy nadzieję że pobyt się udał i zapraszamy  ponownie.");
 	Planet::visited = true;
 	Planet::interactive = false;
-	s.isStuck = true;
-
+	s.isStuck = false;
+	s.stop();
 }
