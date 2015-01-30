@@ -68,7 +68,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak", L"nie"};
+	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak", L"nie", L"stop"};
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
 	vector<wstring> operatory = { L"leć" };
 	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"gór", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
@@ -116,11 +116,11 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else if (ssearch(tokens.at(j), L"płać") != 1000)
 		{
-			komenda = L"płać";
-			flaga = true;
-			statek->isStuck = false;
 			if (Pirate::busy == true || BorderMan::busy == true)
 			{
+				komenda = L"płać";
+				flaga = true;
+				statek->isStuck = false;
 				return L"Płacimy, Kapitanie!";
 			}
 			else
@@ -128,6 +128,16 @@ std::wstring Help::textAnalysis(std::wstring text)
 				return L"Kapitanie, nie ma komu płacić!";
 			}
 		}
+		else if (ssearch(tokens.at(j), L"stop") != 1000)
+			 {
+			
+				komenda = L"stop";
+				statek->movementCounter = 0;
+				flaga = false;
+				statek->isStuck = false;
+				return L"Stop Kapitanie!";
+			
+			}
 		else if (ssearch(tokens.at(j), L"tak") != 1000)
 		{
 			komenda = L"tak";

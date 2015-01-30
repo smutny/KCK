@@ -8,8 +8,8 @@ MotherPlanet::MotherPlanet(float x, float y, float numer)
 {
 	SetPrice(50);
 
-	interactive = true;
-	visited = false;	//ważne
+	interactive = false;
+	visited = true;	//ważne
 	setTexture(numer);
 	setPosition(x, y);
 

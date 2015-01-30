@@ -28,7 +28,7 @@ public:
 	void positiveAns(int i, Ship& statek);
 	void negativeAns();
 	bool visited;
-
+	bool interactive;
 	void byeBye(Ship& s);
 
 protected:
@@ -36,7 +36,7 @@ protected:
 
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
-	bool interactive;
+
 
 	
 

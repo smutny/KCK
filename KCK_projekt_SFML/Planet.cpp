@@ -75,7 +75,13 @@ bool Planet::CanWeShop() {
 }
 
 bool Planet::onPlanet(Ship& statek) {
-	if ((statek.getX() == getX()) && (statek.getY() == getY())) {
+	if (statek.getX() >= getX() &&
+		statek.getX() <= getX() + 10 &&
+		statek.getY() >= getY() &&
+		statek.getY() <= getY() + 10
+		
+		) {
+		statek.isStuck = true;
 		statek.isOnPlanet = true;
 		return true;
 	}

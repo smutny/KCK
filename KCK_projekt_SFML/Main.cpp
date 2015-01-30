@@ -58,7 +58,7 @@ int main(int argv, char* argc[])
 		{
 			for (auto planet : planets)
 			{
-				if (planet.second->onPlanet(s))
+				if (planet.second->onPlanet(s) && planet.first != L"OrionV")
 				{
 					planet.second->welcome(s, b);
 					currentPlanet = planet;
@@ -139,7 +139,6 @@ void wykonaj_komende()
 		}
 		if (BorderMan::busy)
 		{
-			cout << "borderman";
 			b.positiveAns(*currentPlanet.second,s);
 		}
 	}
