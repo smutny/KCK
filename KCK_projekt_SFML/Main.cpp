@@ -57,7 +57,7 @@ int main(int argv, char* argc[])
 		{
 			for (auto planet : planets)
 			{
-				if (planet.second->onPlanet(s))
+				if (planet.second->onPlanet(s) && planet.first != L"OrionV")
 				{
 					planet.second->welcome(s, b);
 					currentPlanet = planet;
@@ -103,29 +103,32 @@ int main(int argv, char* argc[])
 
 void wykonaj_komende()
 {
-	if (Help::komenda == L"tak" && shipOnPlanet && !busy)
-	{
-		currentPlanet.second->shopingTime(s);
-		busy = true;
-	}
-	if (Help::komenda == L"sprzedaj" && !busy)
-	{
-		int temp = (int)_wtof(Help::argument.c_str());
-		currentPlanet.second->positiveAns(temp, s);
-		busy = true;
-	}
+	
+		if (Help::komenda == L"tak" && shipOnPlanet && !busy)
+		{
+			currentPlanet.second->shopingTime(s);
+			busy = true;
+		}
+		if (Help::komenda == L"sprzedaj" && !busy)
+		{
+			int temp = (int)_wtof(Help::argument.c_str());
+			currentPlanet.second->positiveAns(temp, s);
+			busy = true;
+		}
+	
 	if (Help::komenda == L"leć")
 	{
 		
 		if (Help::argument == L"lewo" || Help::argument == L"prawo" || Help::argument == L"góra" || Help::argument == L"dół")
 		{	
-			
+			//std::cout << s.movementCounter<<std::endl;
 			s.fly(dt, Help::argument);
 
 		}
 		else
 		{
 			s.flyTo(dt, *planets[Help::argument]);
+			//std::cout << s.movementCounter << std::endl;
 		}
 	}
 	if (Help::komenda == L"płać")
@@ -146,6 +149,7 @@ void wykonaj_komende()
 				}
 			}
 		}
+
 	}
 
 

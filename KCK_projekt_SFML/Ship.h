@@ -11,6 +11,7 @@ public:
 
 	void display();
 
+	void stop();
 	void fly(float& dt, wstring rozkaz,  int counterLimit = 70);
 	void flyTo(float& dt, Planet& p);
 	void focus(Planet& p);

@@ -7,7 +7,7 @@ public:
 
 	int ilosc;
 	//bool kupowanie = false;
-	
+	bool isMotherPlanet;
 	void powitanieDom();
 
 	void kupowanie(Ship& s);

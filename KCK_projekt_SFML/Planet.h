@@ -22,23 +22,23 @@ public:
 	bool CanWeShop();
 
 	bool onPlanet(Ship& statek);
-	
+
 	void welcome(Ship& statek, BorderMan& b);
 	void shopingTime(Ship& statek);
 	void positiveAns(int i, Ship& statek);
 	void negativeAns();
+
+	
 	bool visited;
 
 	void byeBye(Ship& s);
-
+	bool interactive;
 protected:
 	int pprice;
 
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
-	bool interactive;
 
-	
 
 	
 	 sf::Texture planetTexture;
