@@ -21,26 +21,25 @@ public:
 	void SetBoolFalse();
 	bool CanWeShop();
 
-	bool isMotherPlanet;
-
-	virtual bool onPlanet(Ship& statek);
-
+	bool onPlanet(Ship& statek);
+	
 	void welcome(Ship& statek, BorderMan& b);
 	void shopingTime(Ship& statek);
 	void positiveAns(int i, Ship& statek);
-	void negativeAns();
-
-	
+	void negativeAns(Ship& statek);
 	bool visited;
-
-	void byeBye(Ship& s);
 	bool interactive;
+	void byeBye(Ship& s);
+	bool isMotherPlanet;
+
 protected:
 	int pprice;
 
 	void setTexture(unsigned numer);
 	void setPosition(float x, float y);
 
+
+	
 
 	
 	 sf::Texture planetTexture;

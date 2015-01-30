@@ -1,4 +1,4 @@
-#pragma once
+
 class Generator
 {
 public:
@@ -7,5 +7,5 @@ public:
 
 	static int generate(int from = 1, int to = 100);
 
-};
 
+};

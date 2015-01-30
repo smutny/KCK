@@ -19,8 +19,6 @@ Help::~Help()
 {
 }
 
-
-
 std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 {
 	std::wistringstream iss(source);
@@ -28,7 +26,6 @@ std::vector<std::wstring> Help::tokenize(const std::wstring& source)
 	std::move(std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(iss),
 		std::istream_iterator<std::wstring, wchar_t, std::char_traits<wchar_t>>(),
 		std::back_inserter(tokens));
-
 	return tokens;
 }
 
@@ -62,14 +59,16 @@ std::wstring Help::textAnalysis(std::wstring text)
 {
 	//slownik
 
-	vector<wstring> bezargumentowe = { L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać" , L"sprzedaj", L"tak", L"stop"};
+	vector<wstring> bezargumentowe = {L"zeruj", L"wita", L"cześć", L"siem", L"hej", L"doberek", L"płać", L"sprzedaj", L"tak", L"nie", L"stop", L"kup" };
 	vector<wstring> przeklenstwa = { L"kurw", L"jeb", L"pierd", L"chuj", L"dziwk"};
-	vector<wstring> operatory = { L"leć"};
-	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"góra", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
+	vector<wstring> operatory = { L"leć" };
+	vector<wstring> latanie = {  L"OrionV", L"prawo", L"lewo", L"gór", L"dół", L"Merkury", L"Uran", L"Jowisz", L"Neptun", L"matk" };
 	vector<vector<wstring>*> wskazniki = { &latanie };
 
 	
 	vector<wstring> tokens = tokenize(text);
+
+	//analiza
 
 	//ugrzeczniacz
 	int j = 0;
@@ -108,9 +107,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else if (ssearch(tokens.at(j), L"płać") != 1000)
 		{
-			
-			
-			if ((Pirate::busy == true || BorderMan::busy == true) )
+			if (Pirate::busy == true || BorderMan::busy == true)
 			{
 				komenda = L"płać";
 				flaga = true;
@@ -123,21 +120,51 @@ std::wstring Help::textAnalysis(std::wstring text)
 			}
 		}
 		else if (ssearch(tokens.at(j), L"stop") != 1000)
-		{
+			 {
 			
-			komenda = L"stop";
-			statek->movementCounter = 0;
-			flaga = false;
-			statek->isStuck = false;
-
+				komenda = L"stop";
+				statek->movementCounter = 0;
+				flaga = false;
+				statek->isStuck = false;
 				return L"Stop Kapitanie!";
-		
-		}
+			
+			}
 		else if (ssearch(tokens.at(j), L"tak") != 1000)
 		{
 			komenda = L"tak";
 			flaga = true;
 			return L"Przekazujemy komendę do kontroli naziemnej";
+		}
+		else if (ssearch(tokens.at(j), L"nie") != 1000)
+		{
+			komenda = L"nie";
+			flaga = true;
+			return L"Przekazujemy komendę do rozmówcy";
+		}
+		else if (ssearch(tokens.at(j), L"kup") != 1000)
+		{
+			if (statek->isOnPlanet)
+			{
+				komenda = L"kup";
+				if (tokens.size() <= (j + 1))
+				{
+					return L"Musisz podać ilość jednostek towaru, którą chcesz kupić!";
+				}
+				else
+				{
+					if (tokens.at(j + 1) == L"towar")
+					{
+						argument = L"100";
+					}
+					else
+					{
+						argument = tokens.at(j + 1);
+					}
+					flaga = true;
+					return L"Kupujemy " + argument + L" jednostek towaru!";
+				}
+			}
+			else return L"Nie ma komu sprzedać!";
 		}
 		else if (ssearch(tokens.at(j), L"sprzedaj") != 1000)
 		{
@@ -150,7 +177,14 @@ std::wstring Help::textAnalysis(std::wstring text)
 				}
 				else
 				{
-					argument = tokens.at(j + 1);
+					if (tokens.at(j + 1) == L"towar")
+					{
+						argument = L"100";
+					}
+					else
+					{
+						argument = tokens.at(j + 1);
+					}
 					flaga = true;
 					return L"Sprzedajemy " + argument + L" jednostek towaru!";
 				}
@@ -159,6 +193,7 @@ std::wstring Help::textAnalysis(std::wstring text)
 		}
 		else
 		{
+			komenda = tokens.at(j);
 			return tokens.at(j) + L" Kapitanie!";
 		}
 	}
@@ -198,8 +233,6 @@ std::wstring Help::textAnalysis(std::wstring text)
 
 			}
 		
-
-
 			return L"Komenda \"" + tokens.at(j) + L"\" wymaga argumentu!";
 			j++;
 		}

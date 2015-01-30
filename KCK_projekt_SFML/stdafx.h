@@ -9,6 +9,7 @@
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "gdi32.lib")  
 #endif // SFML_STATIC
+// ostatnia wersja
 
 //SFML
 #include <SFML/Graphics.hpp>

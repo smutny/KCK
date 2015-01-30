@@ -9,63 +9,63 @@ Ship::Ship()
 	setTexture();
 	setPosition();
 
-	SetStuff(1000);
+	SetStuff(20);
 	money = 1000;
 	isStuck = false;
 	isOnPlanet = false;
 }
 
 
-Ship::~Ship()
-{
-}
-
-
-
 void Ship::setTexture2()
 {
-	if (GetStuff() >= 500)
+	if (GetStuff() >= 35)
 	{
 		statekTekstura.loadFromFile("spaceShipFull.png");
 		statek.setTexture(statekTekstura);
 	}
-	else if (GetStuff() <= 500 && GetStuff() >= 100)
+	else if (GetStuff() < 35 && GetStuff() >= 10)
 	{
 		statekTekstura.loadFromFile("spaceShipHalf.png");
 		statek.setTexture(statekTekstura);
 	}
+	else
+	{
+		statekTekstura.loadFromFile("spaceShip.png");
+		statek.setTexture(statekTekstura);
 
+	}
 }
 
+Ship::~Ship()
+{
+}
 
 void Ship::stop()
 {
 	movementCounter = 0;
 }
 
+
 void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 {
-	if (movementCounter == counterLimit)
-	{
-		movementCounter = 0;
-		isStuckv2 = true;
-	}
-	else{
-		movementCounter++;
+	Pirate p1;
+	p1.attack(getX(), getY(), *this);
+	//int mnoznik = 100;
+	movementCounter++;
 
 		vx = vy = 0;
-		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false)
+		if (rozkaz == L"lewo" && isStuck == false && isStuckv2 == false) 
 			vx += -10;
-
-		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false)
+	
+		if (rozkaz == L"prawo" && isStuck == false && isStuckv2 == false) 
 			vx += 165;
-
-		if (rozkaz == L"góra" && isStuck == false && isStuckv2 == false)
+		
+		if (rozkaz == L"gór" && isStuck == false && isStuckv2 == false) 
 			vy += -10;
-
-		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false)
+		
+		if (rozkaz == L"dół" && isStuck == false && isStuckv2 == false) 
 			vy += 165;
-
+		
 		if (movementCounter <= counterLimit)
 		{
 			comeBack();
@@ -73,8 +73,15 @@ void Ship::fly(float& dt, wstring rozkaz, int counterLimit)
 			x += vx * dt;
 			y += vy * dt;
 		}
+		
+		if (movementCounter == counterLimit)
+		{
+			movementCounter = 0;
+			isStuckv2 = true;
+		}
 
-	}
+
+
 
 }
 
@@ -91,7 +98,7 @@ void Ship::flyTo(float& dt, Planet& p)
 		}
 		else if (getY() > p.getY())
 		{
-			fly(dt, L"góra", 7000);
+			fly(dt, L"gór", 7000);
 		}
 		else if (getY() < p.getY())
 		{
@@ -118,8 +125,7 @@ void Ship::display()
 	statek.setPosition(x, y);
 	Window::draw(statek);
 }
-
-
+/*
 void Ship::focus(Planet& p)
 {
 	if (getX() >= p.getX() &&
@@ -130,7 +136,7 @@ void Ship::focus(Planet& p)
 
 		isStuck = true;
 }
-
+*/
 
 void Ship::setTexture()
 {

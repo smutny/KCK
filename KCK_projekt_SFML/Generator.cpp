@@ -2,15 +2,8 @@
 #include "Generator.h"
 
 
-Generator::Generator()
-{
-}
 
-
-Generator::~Generator()
-{
-}
-
+//koñcowy_projekt
 
 int Generator::generate(int from, int to)
 {
@@ -24,5 +17,11 @@ int Generator::generate(int from, int to)
 	return chance;
 }
 
+Generator::Generator()
+{
+}
 
 
+Generator::~Generator()
+{
+}
