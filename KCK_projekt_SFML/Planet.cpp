@@ -93,7 +93,7 @@ bool Planet::onPlanet(Ship& statek) {
 
 void Planet::welcome(Ship& statek, BorderMan& b) {
 
-	if (/*(b.chance <= 50) && *//*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
+	if ((b.chance <= 50) && /*(statek.isStuck == true)*/(onPlanet(statek) == true) && BorderMan::busy == false) {
 		b.action(statek,*this);
 	}
 	else{
@@ -125,6 +125,8 @@ void Planet::negativeAns(Ship & statek) {
 	Console::putTextLine(L"Obsługa Naziemna >> Nie to nie, może następnym razem\n");
 	visited = true;
 	statek.isStuck = false;
+	statek.isStuckv2 = false;
+	statek.movementCounter = 0;
 }
 
 void Planet::positiveAns(int i, Ship& statek) {
