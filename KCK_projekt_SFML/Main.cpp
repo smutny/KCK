@@ -87,11 +87,11 @@ int main(int argv, char* argc[])
 
 	if (s.GetStuff() >= 500)
 	{
-		s.setTexture();
+		s.setTexture2();
 	}
 	else if (s.GetStuff() < 500)
 	{
-		s.setTexture();
+		s.setTexture2();
 	}
 
 
