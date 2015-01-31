@@ -150,16 +150,30 @@ void wykonaj_komende()
 	if (Help::komenda == L"sprzedaj" /*&& !busy2*/)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
-		currentPlanet.second->positiveAns(temp, s);
-		Help::komenda = L"tak";
+		if (temp == 0)
+		{
+			Help::komenda = L"tak";
+		}
+		else
+		{
+			currentPlanet.second->positiveAns(temp, s);
+			Help::komenda = L"tak";
+		}
 		//busy2 = true;
 	}
-	if (Help::komenda == L"kup")
+	if (Help::komenda == L"kup" && shipOnMother)
 	{
 		int temp = (int)_wtof(Help::argument.c_str());
-		MotherPlanet* temptemp = (MotherPlanet*)currentPlanet.second;
-		temptemp->positiveAns(s, temp);
-		Help:: komenda = L"tak";
+		if (temp == 0)
+		{
+			Help::komenda = L"tak";
+		}
+		else
+		{
+			MotherPlanet* temptemp = (MotherPlanet*)currentPlanet.second;
+			temptemp->positiveAns(s, temp);
+			Help::komenda = L"tak";
+		}
 	}
 	if (Help::komenda == L"leć")
 	{
